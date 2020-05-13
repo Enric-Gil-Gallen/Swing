@@ -38,6 +38,7 @@ public class ImplementacionVista extends JFrame implements ActionListener {
         newEnterpMI = new JMenuItem("Nueva Empresa");
         newClient.add(newPartMI);
         newClient.add(newEnterpMI);
+        newEnterpMI.addActionListener(this);
         clientMenu.add(newClient);
 
         //Item delete
@@ -74,7 +75,7 @@ public class ImplementacionVista extends JFrame implements ActionListener {
         factLLMenu.add(displayFactura);
         factLLMenu.add(displayLLamadas);
         menuBar.add(factLLMenu);
-
+/*
         label = new JLabel("<html> <pre>            _______________________________\n" +
                 "          ________|   _    __   __  ___ ___ ___   |_______\n" +
                 "          \\       |  /_\\  (_   /     |   |   |    |      /\n" +
@@ -82,9 +83,11 @@ public class ImplementacionVista extends JFrame implements ActionListener {
                 "           /      |_______________________________|     \\\n" +
                 "          /__________)                        (__________\\\n" +
                 "\t\t </pre> </html> ");
+
+
         label.setVisible(true);
         content.add(label);
-
+ */
     }
 
     // Hacer que las operaciones grafiques !!!!! IMPORTANTE !!!!!
@@ -101,13 +104,11 @@ public class ImplementacionVista extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == newPartMI) {
-            content.removeAll();
             content.add(new NewClientJPanel(false));
             pack();
             content.setVisible(true);
         }
         if (e.getSource() == newEnterpMI) {
-            content.removeAll();
             content= new NewClientJPanel(true);
             pack();
             content.setVisible(true);
