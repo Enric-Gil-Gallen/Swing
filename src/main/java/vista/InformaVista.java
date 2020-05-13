@@ -2,7 +2,6 @@ package vista;
 
 public interface InformaVista {
     void nuevoPartucular();
-    void nuevoContacto();
     void nuevoTarifa();
     void nuevoFactura();
 

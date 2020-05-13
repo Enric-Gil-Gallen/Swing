@@ -1,7 +1,13 @@
 package controlador;
 
 import modelo.CambioModelo;
+import modelo.datos.Cliente;
+import modelo.datos.Factura;
+import modelo.datos.Llamada;
+import modelo.datos.Tarifa;
 import vista.InterrogaVista;
+
+import java.util.HashSet;
 
 public class ImplementacionControlador implements Controlador {
 	private InterrogaVista vista;
@@ -17,49 +23,34 @@ public class ImplementacionControlador implements Controlador {
 		this.modelo = modelo;
 	}
 
+	@Override
+	public void nuevoClienta(Cliente cliente) {
+		//Cliente en = vista.getCliente();
+		//modelo.nuevoClienta(en);
+	}
 
 	@Override
-	public void nuevoPartucular() {
+	public void nuevoTarifa(Tarifa farifa) {
 
 	}
 
 	@Override
-	public void nuevoContacto() {
+	public void nuevoFactura(Factura factura) {
 
 	}
 
 	@Override
-	public void nuevoTarifa() {
+	public void nuevaLlamada(Llamada llamada) {
 
 	}
 
 	@Override
-	public void nuevoFactura() {
+	public void borrarCliente(String nif) {
 
 	}
 
 	@Override
-	public void borrarCliente() {
-
-	}
-
-	@Override
-	public void cambiarTarifa() {
-
-	}
-
-	@Override
-	public void darCliente() {
-
-	}
-
-	@Override
-	public void darCodigo() {
-
-	}
-
-	@Override
-	public void emitirFacturaClaculandoImporte() {
+	public void cambiarTarifa(String nif, Tarifa tarifa) {
 
 	}
 }

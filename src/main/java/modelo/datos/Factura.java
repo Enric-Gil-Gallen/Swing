@@ -48,4 +48,8 @@ public class Factura implements Serializable {
     public Date getFecha() {
         return fechaE;
     }
+
+    public Tarifa getTarifa(){ return tarifa;}
+
+    public Integer getPeriodo(){ return periodo;};
 }
