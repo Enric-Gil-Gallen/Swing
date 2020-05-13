@@ -36,9 +36,9 @@ public class ImplementacionVista extends JFrame implements ActionListener {
         newPartMI = new JMenuItem("Nuevo Particular");
         newPartMI.addActionListener(this);
         newEnterpMI = new JMenuItem("Nueva Empresa");
+        newEnterpMI.addActionListener(this);
         newClient.add(newPartMI);
         newClient.add(newEnterpMI);
-        newEnterpMI.addActionListener(this);
         clientMenu.add(newClient);
 
         //Item delete
@@ -104,12 +104,14 @@ public class ImplementacionVista extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == newPartMI) {
-            content.add(new NewClientJPanel(false));
+            content.removeAll();
+            content.add(new NewClientJPanel());
             pack();
             content.setVisible(true);
         }
         if (e.getSource() == newEnterpMI) {
-            content= new NewClientJPanel(true);
+            content.removeAll();
+            content.add(new NewBussinesJPanel());
             pack();
             content.setVisible(true);
         }
