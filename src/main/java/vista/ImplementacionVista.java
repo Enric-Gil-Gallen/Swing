@@ -31,16 +31,19 @@ public class ImplementacionVista {
         ventana.setVisible(true);
         */
 
+
         // Ventana con botones normales
             JFrame ventana = new JFrame("FlowLayout Manager");
             Container contenedor = ventana.getContentPane();
             //Cambiamos el gestor de aspecto.
             contenedor.setLayout(new FlowLayout());
-            contenedor.add(new JButton("Uno"));
-            contenedor.add(new JButton("Dos"));
-            contenedor.add(new JButton("Tres"));
+            contenedor.add(new JButton("Particular"), BorderLayout.NORTH);
+            contenedor.add(new JButton("Empresa"), BorderLayout.NORTH);
+            JPanel jpEntrada = new JPanel();
+            contenedor.add(new JButton("Borrar Cliente"));
             contenedor.add(new JButton("Cuatro"));
-            contenedor.add(new JButton("Cinco"));
+            contenedor.add(new JButton("BorderLayout.WEST"), BorderLayout.WEST);
+            contenedor.add(new JButton("Salir"));
 
             //ventana.setSize(500, 500);
             // hacer que la ventana se adapte a los botones
