@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 public class Tarifa  implements Serializable {
 
-    private double tarifa;
+    private double precio;
     private String id;
     private static final long serialVersionUID = 42L;
 
     public Tarifa(double tarifa){
-        this.tarifa = tarifa;
+        this.precio = tarifa;
     }
 
     public Tarifa() {
@@ -17,7 +17,7 @@ public class Tarifa  implements Serializable {
     }
 
     public double getTarifa() {
-        return tarifa;
+        return precio;
     }
 
     public void setTarifa(double tarifa) {

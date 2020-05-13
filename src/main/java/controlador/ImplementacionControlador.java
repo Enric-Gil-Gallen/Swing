@@ -25,32 +25,38 @@ public class ImplementacionControlador implements Controlador {
 
 	@Override
 	public void nuevoClienta(Cliente cliente) {
-		//Cliente en = vista.getCliente();
-		//modelo.nuevoClienta(en);
+		Cliente en = vista.getCliente();
+		modelo.nuevoClienta(en);
 	}
 
 	@Override
 	public void nuevoTarifa(Tarifa farifa) {
-
+		Tarifa ta = vista.getTarifa();
+		modelo.nuevoTarifa(ta);
 	}
 
 	@Override
 	public void nuevoFactura(Factura factura) {
-
+		Factura tarifa = vista.getFactura();
+		modelo.nuevoFactura(tarifa);
 	}
 
 	@Override
 	public void nuevaLlamada(Llamada llamada) {
-
+		Llamada llama = vista.getLlamada();
+		modelo.nuevaLlamada(llama);
 	}
 
 	@Override
 	public void borrarCliente(String nif) {
-
+		String dni = vista.getEntrada();
+		modelo.borrarCliente(dni);
 	}
 
 	@Override
 	public void cambiarTarifa(String nif, Tarifa tarifa) {
-
+		String dni = vista.getEntrada();
+		Tarifa tarifa1 = vista.getTarifa();
+		modelo.cambiarTarifa(dni, tarifa1);
 	}
 }
