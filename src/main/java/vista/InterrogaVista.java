@@ -1,10 +1,18 @@
 package vista;
 
+import modelo.datos.Cliente;
+import modelo.datos.Factura;
+import modelo.datos.Llamada;
+import modelo.datos.Tarifa;
+
 public interface InterrogaVista {
-    String getListadoClientes();
-    String getCliente();
+    //Comprobar datos, para que pasen por el CONTROLADOR
 
-    String getLlamadas();
-
+    Cliente getCliente();
+    Tarifa getTarifa();
+    Llamada getLlamada();
+    Factura getFactura();
     String getFacturasClientes();
+
+    String getEntrada();
 }

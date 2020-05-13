@@ -1,6 +1,6 @@
 package vista;
 
-import org.omg.PortableServer.IMPLICIT_ACTIVATION_POLICY_ID;
+//import org.omg.PortableServer.IMPLICIT_ACTIVATION_POLICY_ID;
 
 import javax.swing.*;
 import java.awt.*;

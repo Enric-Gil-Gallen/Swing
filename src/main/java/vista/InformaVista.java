@@ -1,18 +1,18 @@
 package vista;
 
 public interface InformaVista {
+    // Comunicarse directamente con el MODELO
+
     void nuevoPartucular();
-    void nuevoContacto();
     void nuevoTarifa();
     void nuevoFactura();
+    void nuevaLlama();
 
-    void borrarCliente();
+    void clienteBorrado();
 
-    void cambiarTarifa();
+    void cambiadaTarifa();
 
-    void darCliente();
-
-    void darCodigo();
+    void cambiadafactura();
 
     void emitirFacturaClaculandoImporte();
 }
