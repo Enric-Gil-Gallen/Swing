@@ -51,5 +51,5 @@ public class Factura implements Serializable {
 
     public Tarifa getTarifa(){ return tarifa;}
 
-    public Integer getPeriodo(){ return periodo;};
+    public Integer getPeriodo(){ return periodo;}
 }

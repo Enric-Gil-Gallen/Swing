@@ -60,6 +60,7 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 	}
 
 	@Override
+	// Primero areglar la Clase tarifa, luego cambiar todos los datos necesarios
 	public void cambiarTarifa(String nif, Tarifa tarifa) {
 		Iterator<Cliente> it = clientes.iterator();
 		while(it.hasNext()){

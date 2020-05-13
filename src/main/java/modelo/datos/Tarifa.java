@@ -20,7 +20,7 @@ public class Tarifa  implements Serializable {
         return precio;
     }
 
-    public void setTarifa(double tarifa) {
+    /*public void setTarifa(double tarifa) {
         this.tarifa = tarifa;
-    }
+    }*/
 }
