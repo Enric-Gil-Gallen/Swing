@@ -17,9 +17,11 @@ public class ImplementacionVista extends JFrame implements ActionListener {
 
     public ImplementacionVista() {
         setTitle("Practica 4");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1080, 720);
         content = new JPanel();
-        add(content);
+        content.setSize(1080, 720);
+        getContentPane().add(content);
         //Menu
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
@@ -33,7 +35,7 @@ public class ImplementacionVista extends JFrame implements ActionListener {
         JMenu newClient = new JMenu("Nuevo CLiente");
         newPartMI = new JMenuItem("Nuevo Particular");
         newPartMI.addActionListener(this);
-        newEnterpMI = new JMenuItem("Nueva Empresas");
+        newEnterpMI = new JMenuItem("Nueva Empresa");
         newClient.add(newPartMI);
         newClient.add(newEnterpMI);
         clientMenu.add(newClient);
@@ -101,10 +103,14 @@ public class ImplementacionVista extends JFrame implements ActionListener {
         if (e.getSource() == newPartMI) {
             content.removeAll();
             content.add(new NewClientJPanel(false));
-            repaint();
+            pack();
+            content.setVisible(true);
         }
         if (e.getSource() == newEnterpMI) {
+            content.removeAll();
             content= new NewClientJPanel(true);
+            pack();
+            content.setVisible(true);
         }
         if (e.getSource() == deleteClientMI) {
 
