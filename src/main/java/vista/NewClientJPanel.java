@@ -72,9 +72,9 @@ public class NewClientJPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == button) {
             if (!business) {
-                Particular particular = new Particular(nifT.getText(), direccionT.getText(), emailT.getText(), Calendar.getInstance(), tarifaT, nombreT.getText(), surnameT.getText(), cpT.getText(), provinciaT.getText(), poblacionT.getText());
+                Particular particular = new Particular(nifT.getText(),nombreT.getText(),surnameT.getText(),emailT.getText(), Calendar.getInstance().getTime(), tarifaT,direccionT.getText(),  cpT.getText() , provinciaT.getText(), poblacionT.getText());
             } else {
-                Empresa empresa = new Empresa(nifT.getText(), direccionT.getText(), emailT.getText(), Calendar.getInstance(), tarifaT);
+                Empresa empresa = new Empresa(nifT.getText(),nombreT.getText(),emailT.getText(),Calendar.getInstance().getTime(), tarifaT, direccionT.getText(),cpT.getText(),provinciaT.getText(), poblacionT.getText());
             }
         }
     }
