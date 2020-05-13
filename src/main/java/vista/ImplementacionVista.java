@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 public class ImplementacionVista extends JFrame implements ActionListener {
 
     JPanel content;
+    JLabel label;
     JMenu clientMenu, tarifaMenu, factLLMenu;
     JMenuItem newPartMI, newEnterpMI, deleteClientMI, showAllClientMI, showBYMI, tarifacreator, displayTarifas, newFactura, newLlamada,
             displayFactura, displayLLamadas;
@@ -31,6 +32,7 @@ public class ImplementacionVista extends JFrame implements ActionListener {
         //Submenu new
         JMenu newClient = new JMenu("Nuevo CLiente");
         newPartMI = new JMenuItem("Nuevo Particular");
+        newPartMI.addActionListener(this);
         newEnterpMI = new JMenuItem("Nueva Empresas");
         newClient.add(newPartMI);
         newClient.add(newEnterpMI);
@@ -71,7 +73,7 @@ public class ImplementacionVista extends JFrame implements ActionListener {
         factLLMenu.add(displayLLamadas);
         menuBar.add(factLLMenu);
 
-        JLabel label = new JLabel("<html> <pre>            _______________________________\n" +
+        label = new JLabel("<html> <pre>            _______________________________\n" +
                 "          ________|   _    __   __  ___ ___ ___   |_______\n" +
                 "          \\       |  /_\\  (_   /     |   |   |    |      /\n" +
                 "           \\      | /   \\  __) \\__  _|_ _|_ _|_   |     /\n" +
@@ -97,10 +99,12 @@ public class ImplementacionVista extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == newPartMI) {
-
+            content.removeAll();
+            content.add(new NewClientJPanel(false));
+            repaint();
         }
         if (e.getSource() == newEnterpMI) {
-
+            content= new NewClientJPanel(true);
         }
         if (e.getSource() == deleteClientMI) {
 
