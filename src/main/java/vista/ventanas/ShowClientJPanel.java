@@ -32,11 +32,17 @@ public class ShowClientJPanel extends JPanel implements ActionListener, ShowClie
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String textoTodos = all.getText();
-        String textoUno = byid.getText();
-        if (){
-            System.out.println("Envio un clientes");
+        // Crear LikedHaset
+
+        if (e.getSource() == byid){
+            System.out.println("Envio un cliente");
             // Comprobar si es Particular o Empresa -- TOCARIA PERO DA IGUAL
+
+            /*
+            * 1º new LikedHaset
+            *
+            *
+            * */
 
             // SACAR DATOS DE CLIENTE
             /*
@@ -52,7 +58,9 @@ public class ShowClientJPanel extends JPanel implements ActionListener, ShowClie
             */
 
 
-        }else if(){
+        }
+
+        if((e.getSource() == all){
             System.out.println("Envio todos los clientes");
             // RECORRER HASMAP
             Iterator<Cliente> it = clientes.iterator();

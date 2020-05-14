@@ -4,13 +4,18 @@ public class TarifasHoras extends Tarifa {
     private Tarifa tarifa;
     Integer horaInicio;
     Integer horaFinal;
-    private float precioEspecial = 5;
-    private Integer tarifaActual = 1;
+    private double precioEspecial = 0.5;
+    private double precioFuera = 15;
+    private Integer tarifaActual = 2;
 
     public TarifasHoras(Cliente cliente, Integer horaInicio, Integer horaFinal) {
         super(cliente);
         this.horaInicio = horaInicio;
         this.horaFinal = horaFinal;
+    }
+
+    public double getPrecioFuera() {
+        return precioFuera;
     }
 
     public Integer getHoraInicio() {
@@ -21,7 +26,7 @@ public class TarifasHoras extends Tarifa {
         return horaFinal;
     }
 
-    public float getPrecioEspecial() {
+    public double getPrecioEspecial() {
         return precioEspecial;
     }
 

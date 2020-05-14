@@ -1,9 +1,6 @@
 package modelo;
 
-import modelo.datos.Cliente;
-import modelo.datos.Factura;
-import modelo.datos.Llamada;
-import modelo.datos.Tarifa;
+import modelo.datos.*;
 import vista.InformaVista;
 
 import java.util.HashSet;
@@ -160,7 +157,55 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 	}
 
 	@Override
-	public Factura emitirFacturaClaculandoImporte() {
-		return null;
+	/* Este metodo calcula el precio total
+		- De todas las llamadas de un determinando CLIENTE
+		- Teniendo en cuenta el tipo de tarifa que utilize
+	 */
+	public float calcularImporte(HashSet<Llamada> llamadas, Cliente cliente,Tarifa tarifa) {
+		// º1 -- Crear resultado
+		float resultado = -1;
+
+		// 2º -- Sacar los datos dependiendo de la tarifa
+		int tipoTarifa = cliente.getTarifa().getTarifaActual();
+
+		/*
+		if (tarifa instanceof TarifaDia){
+			tarifa = (TarifaDia) ((TarifaDia) tarifa).getDia()
+		}
+		*/
+
+		// º3 -- Recorer todas las llamadas en las que coincida el cliente
+
+		if (tipoTarifa == 0){ // 4º -- Ir calculadon importe dependiendo de del tipo de tarifa
+			Iterator<Llamada> it = llamadas.iterator();
+			while(it.hasNext()) {
+				Llamada ll = it.next();
+				if (ll.getCliente() == cliente) {
+					resultado += ll.getDuración() * tarifa.getPrecio();
+				}
+			}
+		}
+		else if(tipoTarifa == 1){ // 4º -- Ir calculadon importe dependiendo de del tipo de tarifa
+			Iterator<Llamada> it = llamadas.iterator();
+			cliente.getTarifa();
+			while(it.hasNext()) {
+				Llamada ll = it.next();
+				if (ll.getCliente() == cliente) {
+
+				}
+			}
+		}
+		else if ((tipoTarifa == 2)){ // 4º -- Ir calculadon importe dependiendo de del tipo de tarifa
+			Iterator<Llamada> it = llamadas.iterator();
+			while(it.hasNext()) {
+				Llamada ll = it.next();
+				if (ll.getCliente() == cliente) {
+
+				}
+			}
+		}
+		// Resultado
+		return resultado;
 	}
+
 }

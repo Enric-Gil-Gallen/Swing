@@ -1,9 +1,12 @@
 package modelo.datos;
 
+import modelo.ImplementacionModelo;
+
 import java.io.Serializable;
 import java.util.*;
 
 public class Factura implements Serializable {
+    private ImplementacionModelo modelo;
     double importe;
     Cliente cliente;
     Date fechaE;
@@ -12,22 +15,13 @@ public class Factura implements Serializable {
     int periodo;
     private static final long serialVersionUID = 42L;
 
-    public Factura(double importe, Cliente cliente, Date fechaE, Tarifa tarifa, int periodo) {
-        this.importe = importe;
-        this.cliente = cliente;
-        this.fechaE = fechaE;
-        this.tarifa = tarifa;
-        this.periodo = periodo;
-        id = UUID.randomUUID();
-    }
-
-
     public Factura(Cliente cliente, Date fechaE, Tarifa tarifa, int periodo, HashSet<Llamada> llamadas) {
         this.cliente = cliente;
         this.fechaE = fechaE;
         this.tarifa = tarifa;
         this.periodo = periodo;
-        //importe = calcularimporte(tarifa, llamadas);
+        modelo = new ImplementacionModelo();
+        importe = modelo.calcularImporte(llamadas, cliente, tarifa);
         id = UUID.randomUUID();
 
     }

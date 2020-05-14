@@ -3,6 +3,7 @@ package modelo;
 import modelo.datos.Cliente;
 import modelo.datos.Factura;
 import modelo.datos.Llamada;
+import modelo.datos.Tarifa;
 
 import java.util.HashSet;
 
@@ -21,5 +22,5 @@ public interface InterrogaModelo {
 
     String[] datosDeFacturaPorSuCodijo(String codigo);
 
-    Factura emitirFacturaClaculandoImporte();
+    float calcularImporte(HashSet<Llamada> llamadas, Cliente cliente,Tarifa tarifa);
 }
