@@ -1,5 +1,7 @@
 package vista.ventanas;
 
+import controlador.ImplementacionControlador;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,7 +11,10 @@ public class DeleteClientJPanel extends JPanel implements ActionListener {
     JButton button;
     JLabel deleteL;
     JTextField id;
+    public ImplementacionControlador controlador;
+
     public DeleteClientJPanel() {
+        controlador = new ImplementacionControlador();
         deleteL =new JLabel("Introduce el NIF/CiF del cliente");
         add(deleteL);
         id= new JTextField();
@@ -24,6 +29,7 @@ public class DeleteClientJPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()== button){
             String idS=id.getText();
+            controlador.borrarCliente(idS);
         }
     }
 }
