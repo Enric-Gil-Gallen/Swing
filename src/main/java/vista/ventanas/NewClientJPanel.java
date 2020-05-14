@@ -1,5 +1,6 @@
 package vista.ventanas;
 
+import controlador.ImplementacionControlador;
 import modelo.ImplementacionModelo;
 import modelo.datos.Empresa;
 import modelo.datos.Particular;
@@ -12,7 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 
-public class NewClientJPanel extends JPanel implements ActionListener {
+public class NewClientJPanel extends JPanel {
     JTextField nifT, nombreT, direccionT, emailT, poblacionT, surnameT, cpT, provinciaT;
     JLabel nifL, nombreL, direccionL, emailL, poblacionL, surnameL, cpL, provinciaL;
     String nif, direccion, email, poblacion, surname, cp, provincia;
@@ -25,11 +26,13 @@ public class NewClientJPanel extends JPanel implements ActionListener {
     public void setModelo(ImplementacionModelo modelo) {
         this.modelo = modelo;
     }
+    public ImplementacionControlador controlador;
 
     public NewClientJPanel() {
         tarifaT = new Tarifa();// Añadir campos de tarifas disponible
         button = new JButton("Ok");
-        button.addActionListener(this);
+        controlador = new ImplementacionControlador();
+        button.addActionListener( new EscuchadorBoton()); // Conctar con la clase Interna
         String stringF = business ? "CIF" : "NIF";
         nifL = new JLabel(stringF);
         nifT = new JTextField();
@@ -74,16 +77,10 @@ public class NewClientJPanel extends JPanel implements ActionListener {
         add(button);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == button) {
-            if (!business) {
-                Particular particular = new Particular(nifT.getText(), nombreT.getText(), surnameT.getText(), emailT.getText(), Calendar.getInstance().getTime(), tarifaT, direccionT.getText(), cpT.getText(), provinciaT.getText(), poblacionT.getText());
-                modelo.nuevoClienta(particular);
-            } else {
-                Empresa empresa = new Empresa(nifT.getText(), nombreT.getText(), emailT.getText(), Calendar.getInstance().getTime(), tarifaT, direccionT.getText(), cpT.getText(), provinciaT.getText(), poblacionT.getText());
-                modelo.nuevoClienta(empresa);
-            }
+    class EscuchadorBoton implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            Particular particular = new Particular(nifT.getText(), nombreT.getText(), surnameT.getText(), emailT.getText(), Calendar.getInstance().getTime(), tarifaT, direccionT.getText(), cpT.getText(), provinciaT.getText(), poblacionT.getText());
+            modelo.nuevoClienta(particular);
         }
     }
 }

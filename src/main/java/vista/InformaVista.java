@@ -7,7 +7,8 @@ public interface InformaVista {
 
     void nuevoPartucular(Particular particular);
     void nuevoEmpresa(Empresa empresa);
-    void nuevoTarifa(Tarifa tarifa);
+
+   /* void nuevoTarifa(Tarifa tarifa);
     void nuevoFactura(Factura factura);
     void nuevaLlama(Llamada llamada);
 
@@ -17,5 +18,5 @@ public interface InformaVista {
 
     void cambiadaFactura();
 
-    void emitirFacturaClaculandoImporte();
+    void emitirFacturaClaculandoImporte(); */
 }

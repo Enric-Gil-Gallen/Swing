@@ -1,20 +1,20 @@
 package vista.ventanas;
 
 import controlador.Controlador;
-import modelo.ImplementacionModelo;
+import controlador.ImplementacionControlador;
 import modelo.datos.Empresa;
 import modelo.datos.Particular;
 import modelo.datos.Tarifa;
+import vista.InformaVista;
 import vista.InterrogaVista;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
 import java.util.Calendar;
 
-public class NewBussinesJPanel extends JPanel /*implements InterrogaVista */{
+public class NewBussinesJPanel extends JPanel {
     JTextField nifT, nombreT,direccionT,emailT,poblacionT, surnameT, cpT, provinciaT;
     JLabel nifL,nombreL,direccionL, emailL, poblacionL,surnameL,cpL, provinciaL;
     String nif, direccion,email,poblacion, surname, cp, provincia;
@@ -22,19 +22,13 @@ public class NewBussinesJPanel extends JPanel /*implements InterrogaVista */{
     boolean business;
     private Tarifa tarifaT;
 
-    private Controlador controlador;
-    public void setControlador(Controlador controlador) {
-        this.controlador = controlador;
-    }
+    public ImplementacionControlador controlador;
 
-    //private ImplementacionModelo modelo;
-    /*public void setModelo(ImplementacionModelo modelo) {
-        this.modelo = modelo;
-    }*/
 
-    public NewBussinesJPanel(){
+    public NewBussinesJPanel() {
         tarifaT=new Tarifa(2);// Añadir campos de tarifas disponible
         button= new JButton("Ok"); //Crear boton
+        controlador = new ImplementacionControlador();
         button.addActionListener( new EscuchadorBoton()); // Conctar con la clase Interna
         String stringF= business ? "CIF" : "NIF";
         nifL= new JLabel(stringF);
@@ -75,17 +69,13 @@ public class NewBussinesJPanel extends JPanel /*implements InterrogaVista */{
         add(button);
     }
 
-    private class EscuchadorBoton implements ActionListener {
+    class EscuchadorBoton implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == button) {
-                System.out.println("dfgihsuogfhsdilbgil");
-                Empresa empresa = new Empresa(nifT.getText(),nombreT.getText(),emailT.getText(),Calendar.getInstance().getTime(), tarifaT, direccionT.getText(),cpT.getText(),provinciaT.getText(), poblacionT.getText());
-                System.out.println("aaaaaaaaaaaaaaaa");
-                controlador.nuevoClienta(empresa);
-
+            Empresa empresa = new Empresa(nifT.getText(),nombreT.getText(),emailT.getText(),Calendar.getInstance().getTime(), tarifaT, direccionT.getText(),cpT.getText(),provinciaT.getText(), poblacionT.getText());
+            controlador.nuevoClienta(empresa);
             }
-        }
+
     }
 
 }

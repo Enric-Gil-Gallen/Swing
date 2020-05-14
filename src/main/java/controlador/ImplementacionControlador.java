@@ -1,31 +1,32 @@
 package controlador;
 
 import modelo.CambioModelo;
+import modelo.ImplementacionModelo;
 import modelo.datos.Cliente;
 import modelo.datos.Factura;
 import modelo.datos.Llamada;
 import modelo.datos.Tarifa;
+import vista.ImplementacionVista;
 import vista.InterrogaVista;
 
 import java.util.HashSet;
 
 public class ImplementacionControlador implements Controlador {
 	private InterrogaVista vista;
-	private CambioModelo modelo;
+	private ImplementacionModelo modelo;
 
-	public ImplementacionControlador() {}
+	public ImplementacionControlador() {
+		modelo = new ImplementacionModelo();
+		//vista = new InterrogaVista() {
+	}
 
 	public void setVista(InterrogaVista vista) {
 		this.vista = vista;
 	}
 
-	public void setModelo(CambioModelo modelo) {
-		this.modelo = modelo;
-	}
 
 	@Override
 	public void nuevoClienta(Cliente cliente) {
-		System.out.println("He llegado al modelo");
 		modelo.nuevoClienta(cliente);
 	}
 
