@@ -166,16 +166,53 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 		float resultado = -1;
 
 		// 2º -- Sacar los datos dependiendo de la tarifa
-		int tipoTarifa = cliente.getTarifa().getTarifaActual();
-
-		/*
+/*
 		if (tarifa instanceof TarifaDia){
-			tarifa = (TarifaDia) ((TarifaDia) tarifa).getDia()
+			tarifa = ((TarifaDia) tarifa).getDia();
 		}
-		*/
-
+*/
 		// º3 -- Recorer todas las llamadas en las que coincida el cliente
+		Iterator<Llamada> it = llamadas.iterator();
+		while(it.hasNext()) {
+			Llamada ll = it.next();
+			// 4º -- Ir calculadon importe dependiendo de del tipo de tarifa
+			if (ll.getCliente() == cliente){
+				if (cliente.getTarifa() instanceof TarifaDia) {
+					if (ll.getDia() != ((TarifaDia) tarifa).getDia()){
+						resultado += ll.getDuración() * tarifa.getPrecio();;
+					}
+				}
+				else if (cliente.getTarifa() instanceof TarifasHoras){
+					/*
+						Int32 horas = (tsegundos / 3600);
+						Int32 minutos = ((tsegundos-horas*3600)/60);
+						Int32 segundos = tsegundos-(horas*3600+minutos*60);
+					*/
 
+					Integer llamadaHorasInicio = (ll.getHoraInicio() / 3600);
+
+					Integer tarifaHorasInicio = ((TarifasHoras) tarifa).getHoraInicio() / 3600;
+
+					if (llamadaHorasInicio == tarifaHorasInicio){
+						resultado += ll.getDuración() * ((TarifasHoras) tarifa).getPrecioEspecial();
+					}else {
+						resultado += ll.getDuración() * tarifa.getPrecio();
+					}
+				}
+				else {
+					resultado += ll.getDuración() * tarifa.getPrecio();
+				}
+			}
+		}
+/*		if (ll.getCliente() instanceof TarifaDia) {
+				resultado += ll.getDuración() * tarifa.getPrecio();
+			}
+			else if (){
+
+			}
+			else {
+				resultado += ll.getDuración() * tarifa.getPrecio();
+			}
 		if (tipoTarifa == 0){ // 4º -- Ir calculadon importe dependiendo de del tipo de tarifa
 			Iterator<Llamada> it = llamadas.iterator();
 			while(it.hasNext()) {
@@ -204,6 +241,8 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 				}
 			}
 		}
+		*/
+
 		// Resultado
 		return resultado;
 	}
