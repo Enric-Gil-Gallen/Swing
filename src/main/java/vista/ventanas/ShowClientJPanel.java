@@ -2,6 +2,8 @@ package vista.ventanas;
 
 import modelo.ImplementacionModelo;
 import modelo.datos.Cliente;
+import modelo.datos.Empresa;
+import modelo.datos.Particular;
 import vista.interfacesVentanas.cojerDatosModelo.ShowClientPanel;
 
 import javax.swing.*;
@@ -13,7 +15,6 @@ public class ShowClientJPanel extends JPanel implements ActionListener, ShowClie
     JLabel labelByID;
     JButton all, byid;
     JList<String>table;
-    HashSet<Cliente> clientes;
     private ImplementacionModelo modelo;
     Vector<String> data;
 
@@ -26,54 +27,42 @@ public class ShowClientJPanel extends JPanel implements ActionListener, ShowClie
         all = new JButton("Obtener todos");
         table = new JList<>(data);
         add(table);
+        data = new Vector<String>();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Crear LikedHaset
 
         if (e.getSource() == byid){
-            System.out.println("Envio un cliente");
-            // Comprobar si es Particular o Empresa -- TOCARIA PERO DA IGUAL
+            Cliente cl = modelo.darCliente(labelByID.getText());
 
-            /*
-            * 1º new LikedHaset
-            *
-            *
-            * */
-
-            // SACAR DATOS DE CLIENTE
-            /*
-            = obtenerPorDNI(texto).getNif();
-            = oobtenerPorDNI(texto).getNombre();
-            = oobtenerPorDNI(texto).getFecha();
-            = oobtenerPorDNI(texto).getEmail();
-            = oobtenerPorDNI(texto).getDireccion();
-            = oobtenerPorDNI(texto).getPoblacion();
-            = oobtenerPorDNI(texto).getProvincia();
-            = oobtenerPorDNI(texto).getCp();
-            = oobtenerPorDNI(texto).getTarifa();
-            */
-
-
+            if (cl instanceof Particular){
+                String cli = ((Particular) cl).toString();
+                data.add(cli);
+            }
+            if (cl instanceof Empresa){
+                String cli = ((Empresa) cl).toString();
+                data.add(cli);
+            }
         }
 
         if((e.getSource() == all)){
-            System.out.println("Envio todos los clientes");
-            // RECORRER HASMAP
+
+            HashSet<Cliente> clientes = modelo.todosLosClientes();
             Iterator<Cliente> it = clientes.iterator();
+
             while(it.hasNext()){
-            /*
-            = obtenerPorDNI(texto).getNif();
-            = oobtenerPorDNI(texto).getNombre();
-            = oobtenerPorDNI(texto).getFecha();
-            = oobtenerPorDNI(texto).getEmail();
-            = oobtenerPorDNI(texto).getDireccion();
-            = oobtenerPorDNI(texto).getPoblacion();
-            = oobtenerPorDNI(texto).getProvincia();
-            = oobtenerPorDNI(texto).getCp();
-            = oobtenerPorDNI(texto).getTarifa();
-            */
+                Cliente actual = it.next();
+
+                if (actual instanceof Particular){
+                    String cli = ((Particular) actual).toString();
+                    data.add(cli);
+                }
+                if (actual instanceof Empresa){
+                    String cli = ((Empresa) actual).toString();
+                    data.add(cli);
+                }
+
             }
         }
     }
