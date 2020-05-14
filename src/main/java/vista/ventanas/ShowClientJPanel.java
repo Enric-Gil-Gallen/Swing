@@ -14,7 +14,7 @@ import java.util.*;
 public class ShowClientJPanel extends JPanel implements ActionListener, ShowClientPanel {
     JLabel labelByID;
     JButton all, byid;
-    JList<String>table;
+    JList<String> table;
     private ImplementacionModelo modelo;
     Vector<String> data;
 
@@ -22,49 +22,41 @@ public class ShowClientJPanel extends JPanel implements ActionListener, ShowClie
         modelo = new ImplementacionModelo();
         labelByID = new JLabel("Introduce el nif/cif del cliente");
         add(labelByID);
-        byid= new JButton("Buscar");
+        byid = new JButton("Buscar");
+        byid.addActionListener(this);
         add(byid);
         all = new JButton("Obtener todos");
-        table = new JList<>(data);
-        add(table);
-        data = new Vector<String>();
+        all.addActionListener(this);
+        add(all);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == byid){
+        if (e.getSource() == byid) {
+            data = new Vector<String>();
             Cliente cl = modelo.darCliente(labelByID.getText());
-
-            if (cl instanceof Particular){
-                String cli = ((Particular) cl).toString();
-                data.add(cli);
-            }
-            if (cl instanceof Empresa){
-                String cli = ((Empresa) cl).toString();
-                data.add(cli);
-            }
+            String cli = cl.toString();
+            data.add(cli);
+            table = new JList<>(data);
+            add(table);
+            updateUI();
         }
 
-        if((e.getSource() == all)){
-
+        if ((e.getSource() == all)) {
             HashSet<Cliente> clientes = modelo.todosLosClientes();
-            Iterator<Cliente> it = clientes.iterator();
-
-            while(it.hasNext()){
-                Cliente actual = it.next();
-
-                if (actual instanceof Particular){
-                    String cli = ((Particular) actual).toString();
-                    data.add(cli);
-                }
-                if (actual instanceof Empresa){
-                    String cli = ((Empresa) actual).toString();
-                    data.add(cli);
-                }
-
+            data = new Vector<String>();
+            for (Cliente actual : clientes) {
+                String cli = actual.toString();
+                data.add(cli);
             }
+            data.add("dd");
+            table = new JList<>(data);
+            add(table);
+            System.out.println("XX");
+            repaint();
         }
+
     }
 
     @Override
