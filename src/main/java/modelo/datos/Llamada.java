@@ -8,18 +8,16 @@ public class Llamada  implements Serializable {
     private static final long serialVersionUID = 42L;
     int numeroTelefono;
     Integer horaInicio;
-    Integer horaFinal;
+    private Integer dia;
     int duración;
     Cliente cliente;
-    private Integer dia;
 
-    public Llamada(int numeroTelefono, Date horadiaLlamada, int duración, Cliente cliente) {
+    public Llamada(int numeroTelefono, Integer horaInicio, Integer dia, int duración, Cliente cliente) {
         this.numeroTelefono = numeroTelefono;
-        this.horadiaLlamada = horadiaLlamada;
-        this.duración = duración;
-        this.cliente= cliente;
-        this.horaFinal = horaFinal;
         this.horaInicio = horaInicio;
+        this.dia = dia;
+        this.duración = duración;
+        this.cliente = cliente;
     }
 
     public int getNumeroTelefono() {
@@ -30,9 +28,6 @@ public class Llamada  implements Serializable {
         return horaInicio;
     }
 
-    public Integer getHoraFinal() {
-        return horaFinal;
-    }
 
     public int getDuración() {
         return duración;
@@ -44,9 +39,10 @@ public class Llamada  implements Serializable {
 
     @Override
     public String toString() {
-        return "Llamada:" +
+        return "Llamada{" +
                 "numeroTelefono=" + numeroTelefono +
-                ", horadiaLlamada=" + horadiaLlamada +
+                ", horaInicio=" + horaInicio +
+                ", dia=" + dia +
                 ", duración=" + duración +
                 ", cliente=" + cliente +
                 '}';
