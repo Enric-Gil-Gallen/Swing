@@ -37,8 +37,8 @@ public class NewFactureJPanel extends JPanel {
     }
 
     public void actionPerformed(ActionEvent e) {
-        Factura factura = new Particular(importT.getText(),/* clienteT.getText(),*/  Calendar.getInstance() /*,tarifaT.getText()*/, periodoT.getText(), tarifaT, direccionT.getText(), cpT.getText(), provinciaT.getText(), poblacionT.getText());
-        controlador.nuevaFactura(factura);
+      //  Factura factura = new Particular(importT.getText(),/* clienteT.getText(),*/  Calendar.getInstance().getTime() /*,tarifaT.getText()*/, periodoT.getText(), tarifaT, direccionT.getText(), cpT.getText(), provinciaT.getText(), poblacionT.getText());
+        //controlador.nuevaFactura(factura);
     }
 
 }

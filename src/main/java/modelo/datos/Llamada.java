@@ -47,4 +47,8 @@ public class Llamada  implements Serializable {
                 ", cliente=" + cliente +
                 '}';
     }
+
+    public Integer getDia() {
+        return dia;
+    }
 }

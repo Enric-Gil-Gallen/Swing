@@ -1,15 +1,17 @@
 package modelo.datos;
 
 public class TarifasHoras extends Tarifa {
-    private Tarifa tarifa;
     Integer horaInicio;
     Integer horaFinal;
     private double precioEspecial = 0.5;
     private double precioFuera = 15;
 
-    public TarifasHoras(Integer horaInicio, Integer horaFinal) {
+    public TarifasHoras(double precio, String ip, Integer horaInicio, Integer horaFinal, double precioEspecial, double precioFuera) {
+        super(precio, ip);
         this.horaInicio = horaInicio;
         this.horaFinal = horaFinal;
+        this.precioEspecial = precioEspecial;
+        this.precioFuera = precioFuera;
     }
 
     public double getPrecioFuera() {
