@@ -2,9 +2,7 @@ package vista;
 
 //import org.omg.PortableServer.IMPLICIT_ACTIVATION_POLICY_ID;
 
-import vista.ventanas.DeleteClientJPanel;
-import vista.ventanas.NewBussinesJPanel;
-import vista.ventanas.NewClientJPanel;
+import vista.ventanas.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -61,7 +59,7 @@ public class ImplementacionVista extends JFrame implements ActionListener {
         //Item ShowAll
 
         showClientMI = new JMenuItem("Listado y Busqueda de Clientes");
-        deleteClientMI.addActionListener(this);
+        showClientMI.addActionListener(this);
         clientMenu.add(showClientMI);
 
         menuBar.add(clientMenu);
@@ -69,6 +67,8 @@ public class ImplementacionVista extends JFrame implements ActionListener {
 
         tarifacreator = new JMenuItem("Creador de Tarifas");
         displayTarifas = new JMenuItem("Mostrar Traifas");
+        tarifacreator.addActionListener(this);
+        displayTarifas.addActionListener(this);
         tarifaMenu.add(tarifacreator);
         tarifaMenu.add(displayTarifas);
         menuBar.add(tarifaMenu);
@@ -79,6 +79,10 @@ public class ImplementacionVista extends JFrame implements ActionListener {
         newLlamada = new JMenuItem("Nueva Llamada");
         displayFactura = new JMenuItem("Mostar Facturas");
         displayLLamadas = new JMenuItem("Mostrar Llamadas");
+        newFactura.addActionListener(this);
+        newLlamada.addActionListener(this);
+        displayFactura.addActionListener(this);
+        displayLLamadas.addActionListener(this);
         factLLMenu.add(newFactura);
         factLLMenu.add(newLlamada);
         factLLMenu.add(displayFactura);
@@ -131,25 +135,46 @@ public class ImplementacionVista extends JFrame implements ActionListener {
             content.setVisible(true);
         }
         if (e.getSource() == showClientMI) {
-
+            content.removeAll();
+            content.add(new ShowClientJPanel());
+            pack();
+            content.setVisible(true);
         }
         if (e.getSource() == tarifacreator) {
-
+            content.removeAll();
+            content.add(new TarifaCreatorJPanel());
+            pack();
+            content.setVisible(true);
         }
         if (e.getSource() == displayTarifas) {
-
+            content.removeAll();
+            content.add(new TarifaCreatorJPanel());
+            pack();
+            content.setVisible(true);
         }
         if (e.getSource() == newFactura) {
-
+            content.removeAll();
+            content.add(new NewFactureJPanel());
+            pack();
+            content.setVisible(true);
         }
         if (e.getSource() == newLlamada) {
-
+            content.removeAll();
+            content.add(new NewLLamadaJPanel());
+            pack();
+            content.setVisible(true);
         }
         if (e.getSource() == displayFactura) {
-
+            content.removeAll();
+            content.add(new DisplayFacturaJPanel());
+            pack();
+            content.setVisible(true);
         }
         if (e.getSource() == displayLLamadas) {
-
+            content.removeAll();
+            content.add(new NewFactureJPanel());
+            pack();
+            content.setVisible(true);
         }
     }
 

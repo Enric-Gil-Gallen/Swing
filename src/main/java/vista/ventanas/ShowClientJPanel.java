@@ -5,18 +5,17 @@ import modelo.datos.Cliente;
 import vista.interfacesVentanas.cojerDatosModelo.ShowClientPanel;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.*;
 
 public class ShowClientJPanel extends JPanel implements ActionListener, ShowClientPanel {
     JLabel labelByID;
     JButton all, byid;
-    JTable table;
+    JList<String>table;
     HashSet<Cliente> clientes;
     private ImplementacionModelo modelo;
+    Vector<String> data;
 
     public ShowClientJPanel() {
         modelo = new ImplementacionModelo();
@@ -25,8 +24,7 @@ public class ShowClientJPanel extends JPanel implements ActionListener, ShowClie
         byid= new JButton("Buscar");
         add(byid);
         all = new JButton("Obtener todos");
-        CustomModel customModel= new CustomModel();
-        table = new JTable(customModel);
+        table = new JList<>(data);
         add(table);
     }
 
@@ -60,7 +58,7 @@ public class ShowClientJPanel extends JPanel implements ActionListener, ShowClie
 
         }
 
-        if((e.getSource() == all){
+        if((e.getSource() == all)){
             System.out.println("Envio todos los clientes");
             // RECORRER HASMAP
             Iterator<Cliente> it = clientes.iterator();
