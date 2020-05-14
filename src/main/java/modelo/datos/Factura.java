@@ -46,4 +46,15 @@ public class Factura implements Serializable {
     public Tarifa getTarifa(){ return tarifa;}
 
     public Integer getPeriodo(){ return periodo;}
+
+    @Override
+    public String toString() {
+        return "Factura de importe=" + importe +
+                ", cliente=" + cliente +
+                "desde fecha " + fechaE.toString() +
+                "con la tarifa=" + tarifa +
+                "en el periodo=" + periodo +
+                ", id=" + id +
+                '}';
+    }
 }
