@@ -34,4 +34,13 @@ public class Llamada  implements Serializable {
         return cliente;
     }
 
+    @Override
+    public String toString() {
+        return "Llamada:" +
+                "numeroTelefono=" + numeroTelefono +
+                ", horadiaLlamada=" + horadiaLlamada +
+                ", duración=" + duración +
+                ", cliente=" + cliente +
+                '}';
+    }
 }
