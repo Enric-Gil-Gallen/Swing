@@ -9,7 +9,7 @@ public class TarifaDia extends Tarifa{
     public TarifaDia(double precio, String ip) {
         super(precio, ip);
     }
-    
+
     public double getPrecioFuera() {
         return precioFuera;
     }
