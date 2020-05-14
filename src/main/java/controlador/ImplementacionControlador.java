@@ -25,8 +25,8 @@ public class ImplementacionControlador implements Controlador {
 
 	@Override
 	public void nuevoClienta(Cliente cliente) {
-		Cliente en = vista.getCliente();
-		modelo.nuevoClienta(en);
+		System.out.println("He llegado al modelo");
+		modelo.nuevoClienta(cliente);
 	}
 
 	@Override

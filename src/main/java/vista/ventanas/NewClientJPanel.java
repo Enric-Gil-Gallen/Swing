@@ -1,10 +1,10 @@
-package vista;
+package vista.ventanas;
 
 import modelo.ImplementacionModelo;
 import modelo.datos.Empresa;
 import modelo.datos.Particular;
 import modelo.datos.Tarifa;
-import sun.plugin.dom.html.HTMLBodyElement;
+//import sun.plugin.dom.html.HTMLBodyElement;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,8 +27,7 @@ public class NewClientJPanel extends JPanel implements ActionListener {
     }
 
     public NewClientJPanel() {
-        this.business = business;
-        tarifaT = new Tarifa(2);// Añadir campos de tarifas disponible
+        tarifaT = new Tarifa();// Añadir campos de tarifas disponible
         button = new JButton("Ok");
         button.addActionListener(this);
         String stringF = business ? "CIF" : "NIF";
@@ -67,8 +66,10 @@ public class NewClientJPanel extends JPanel implements ActionListener {
         provinciaT.setPreferredSize(new Dimension(200, 24));
         add(provinciaL);
         add(provinciaT);
-        emailL = new JLabel("Email");
+        emailL= new JLabel("Email");
         emailT = new JTextField();
+        emailT.setPreferredSize( new Dimension( 200, 24 ) );
+        add(emailL);
         add(emailT);
         add(button);
     }

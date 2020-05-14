@@ -2,8 +2,10 @@ package vista;
 
 //import org.omg.PortableServer.IMPLICIT_ACTIVATION_POLICY_ID;
 
+import vista.ventanas.NewBussinesJPanel;
+import vista.ventanas.NewClientJPanel;
+
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,6 +16,7 @@ public class ImplementacionVista extends JFrame implements ActionListener {
     JMenu clientMenu, tarifaMenu, factLLMenu;
     JMenuItem newPartMI, newEnterpMI, deleteClientMI, showAllClientMI, showBYMI, tarifacreator, displayTarifas, newFactura, newLlamada,
             displayFactura, displayLLamadas;
+
 
     public ImplementacionVista() {
         setTitle("Practica 4");
