@@ -4,21 +4,24 @@ import java.io.Serializable;
 
 public abstract class Tarifa  implements Serializable {
 
-    private Cliente cliente;
     private static final long serialVersionUID = 42L;
-    private double precio = 0.15;
-    private Integer tarifaActual = 0;
+    private double precio ;
+    private String ip ;
 
-    public Tarifa(Cliente cliente){
-        this.cliente = cliente;
+    public Tarifa(double precio, String ip) {
+        this.precio = precio;
+        this.ip = ip;
     }
 
     public double getPrecio(){
         return precio;
     }
 
-    public Integer getTarifaActual() {
-        return tarifaActual;
+    public String getIp() {
+        return ip;
     }
 
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
 }
