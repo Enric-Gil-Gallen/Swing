@@ -16,4 +16,8 @@ public class Particular extends Cliente {
         return apellidos;
     }
 
+    @Override
+    public String toString() {
+        return super.toString()+ "apellidos='" + apellidos + '\'' + '}';
+    }
 }

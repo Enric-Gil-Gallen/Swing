@@ -95,4 +95,17 @@ public class Cliente implements Serializable {
     public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente:" +
+                "ID='" + nif + '\'' +
+                ", email='" + email + '\'' +
+                ", tarifa=" + tarifa +
+                ", nombre='" + nombre + '\'' +
+                ", cp='" + cp + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", poblacion='" + poblacion + '\'' +
+                ", provincia='" + provincia ;
+    }
 }
