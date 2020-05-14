@@ -29,7 +29,7 @@ public class NewClientJPanel extends JPanel {
     public ImplementacionControlador controlador;
 
     public NewClientJPanel() {
-        tarifaT = new Tarifa();// Añadir campos de tarifas disponible
+        //tarifaT = new Tarifa(2,2);// Añadir campos de tarifas disponible
         button = new JButton("Ok");
         controlador = new ImplementacionControlador();
         button.addActionListener( new EscuchadorBoton()); // Conctar con la clase Interna

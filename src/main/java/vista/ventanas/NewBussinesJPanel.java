@@ -5,6 +5,7 @@ import controlador.ImplementacionControlador;
 import modelo.datos.Empresa;
 import modelo.datos.Particular;
 import modelo.datos.Tarifa;
+import modelo.datos.TarifaDia;
 import vista.InformaVista;
 import vista.InterrogaVista;
 
@@ -26,7 +27,7 @@ public class NewBussinesJPanel extends JPanel {
 
 
     public NewBussinesJPanel() {
-        tarifaT=new Tarifa(2);// Añadir campos de tarifas disponible
+        //Tarifa tarifaT = new TarifaDia();// Añadir campos de tarifas disponible
         button= new JButton("Ok"); //Crear boton
         controlador = new ImplementacionControlador();
         button.addActionListener( new EscuchadorBoton()); // Conctar con la clase Interna
