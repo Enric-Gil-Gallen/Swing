@@ -2,25 +2,19 @@ package modelo.datos;
 
 import java.io.Serializable;
 
-public class Tarifa  implements Serializable {
+public abstract class Tarifa  implements Serializable {
 
-    private double precio;
-    private String id;
+    private Cliente cliente;
     private static final long serialVersionUID = 42L;
+    private float precio = 15;
+    private Integer tarifaActual = 0;
 
-    public Tarifa(double tarifa){
-        this.precio = tarifa;
+    public Tarifa(Cliente cliente){
+        this.cliente = cliente;
     }
 
-    public Tarifa() {
-
-    }
-
-    public double getTarifa() {
+    public float getPrecio(){
         return precio;
     }
 
-    /*public void setTarifa(double tarifa) {
-        this.tarifa = tarifa;
-    }*/
 }
