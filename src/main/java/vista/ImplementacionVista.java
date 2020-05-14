@@ -2,6 +2,7 @@ package vista;
 
 //import org.omg.PortableServer.IMPLICIT_ACTIVATION_POLICY_ID;
 
+import vista.ventanas.DeleteClientJPanel;
 import vista.ventanas.NewBussinesJPanel;
 import vista.ventanas.NewClientJPanel;
 
@@ -14,8 +15,16 @@ public class ImplementacionVista extends JFrame implements ActionListener {
     JPanel content;
     JLabel label;
     JMenu clientMenu, tarifaMenu, factLLMenu;
-    JMenuItem newPartMI, newEnterpMI, deleteClientMI, showAllClientMI, showBYMI, tarifacreator, displayTarifas, newFactura, newLlamada,
-            displayFactura, displayLLamadas;
+    JMenuItem newPartMI;
+    JMenuItem newEnterpMI;
+    JMenuItem deleteClientMI;
+    JMenuItem showClientMI;
+    JMenuItem tarifacreator;
+    JMenuItem displayTarifas;
+    JMenuItem newFactura;
+    JMenuItem newLlamada;
+    JMenuItem displayFactura;
+    JMenuItem displayLLamadas;
 
 
     public ImplementacionVista() {
@@ -46,17 +55,14 @@ public class ImplementacionVista extends JFrame implements ActionListener {
 
         //Item delete
         deleteClientMI = new JMenuItem("Borrar Cliente");
+        deleteClientMI.addActionListener(this);
         clientMenu.add(deleteClientMI);
 
         //Item ShowAll
 
-        showAllClientMI = new JMenuItem("Listado de Clientes");
-        clientMenu.add(showAllClientMI);
-
-        //Item Show by NIF/CIF
-
-        showBYMI = new JMenuItem("Busqueda de clientes");
-        clientMenu.add(showBYMI);
+        showClientMI = new JMenuItem("Listado y Busqueda de Clientes");
+        deleteClientMI.addActionListener(this);
+        clientMenu.add(showClientMI);
 
         menuBar.add(clientMenu);
         //Submenu tarifa
@@ -119,12 +125,12 @@ public class ImplementacionVista extends JFrame implements ActionListener {
             content.setVisible(true);
         }
         if (e.getSource() == deleteClientMI) {
-
+            content.removeAll();
+            content.add(new DeleteClientJPanel());
+            pack();
+            content.setVisible(true);
         }
-        if (e.getSource() == showAllClientMI) {
-
-        }
-        if (e.getSource() == showBYMI) {
+        if (e.getSource() == showClientMI) {
 
         }
         if (e.getSource() == tarifacreator) {
