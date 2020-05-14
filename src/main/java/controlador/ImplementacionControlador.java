@@ -49,8 +49,7 @@ public class ImplementacionControlador implements Controlador {
 	}
 
 	@Override
-	public void borrarCliente(String nif) {
-		String dni = vista.getEntrada();
+	public void borrarCliente(String dni) {
 		modelo.borrarCliente(dni);
 	}
 
