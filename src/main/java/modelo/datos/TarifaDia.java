@@ -2,24 +2,26 @@ package modelo.datos;
 
 public class TarifaDia extends Tarifa{
 
-    private double precioEspecial = 0;
-    private double precioFuera = 15;
-    private Integer dia;
+    private double precioEspecial;
+    private double precioFuera ;
+    private int dia;
 
-    public TarifaDia(double precio, String ip) {
+    public TarifaDia(double precio, String ip, double precioEspecial, double precioFuera, int dia) {
         super(precio, ip);
-    }
-
-    public double getPrecioFuera() {
-        return precioFuera;
+        this.precioEspecial = precioEspecial;
+        this.precioFuera = precioFuera;
+        this.dia = dia;
     }
 
     public double getPrecioEspecial() {
         return precioEspecial;
     }
 
+    public double getPrecioFuera() {
+        return precioFuera;
+    }
 
-    public Integer getDia() {
+    public int getDia() {
         return dia;
     }
 }
