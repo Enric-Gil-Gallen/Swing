@@ -25,6 +25,7 @@ public class NewClientJPanel extends JPanel {
 
     public NewClientJPanel(ImplementacionControlador controlador) {
         this.controlador = controlador;
+        setPreferredSize( new Dimension( 1080, 720 ));
         //tarifaT = new Tarifa(2,2);// Añadir campos de tarifas disponible
         button = new JButton("Ok");
         button.addActionListener( new EscuchadorBoton()); // Conctar con la clase Interna

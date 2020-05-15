@@ -28,6 +28,7 @@ public class NewBussinesJPanel extends JPanel {
 
     public NewBussinesJPanel(ImplementacionControlador controlador) {
         this.controlador = controlador;
+        setPreferredSize( new Dimension( 1080, 720 ));
         //Tarifa tarifaT = new TarifaDia();// Añadir campos de tarifas disponible
         button= new JButton("Ok"); //Crear boton
         button.addActionListener( new EscuchadorBoton()); // Conctar con la clase Interna

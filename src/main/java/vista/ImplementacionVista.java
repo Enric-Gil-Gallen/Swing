@@ -165,7 +165,7 @@ public class ImplementacionVista extends JFrame implements ActionListener {
         }
         if (e.getSource() == newLlamada) {
             content.removeAll();
-            content.add(new NewLLamadaJPanel());
+            content.add(new NewLLamadaJPanel(controlador));
             pack();
             content.setVisible(true);
         }

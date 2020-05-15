@@ -4,6 +4,7 @@ import modelo.ImplementacionModelo;
 import modelo.datos.Cliente;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashSet;
@@ -20,6 +21,7 @@ public class DisplayLlamadasJPanel extends JPanel implements ActionListener {
 
     public DisplayLlamadasJPanel(){
         modelo = new ImplementacionModelo();
+        setPreferredSize( new Dimension( 1080, 720 ));
         labelByID = new JLabel("Introduce el nif/cif del cliente");
         add(labelByID);
         textfield = new JTextField();
