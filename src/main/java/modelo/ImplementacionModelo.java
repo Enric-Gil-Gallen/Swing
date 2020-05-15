@@ -86,17 +86,13 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 	}
 
 	@Override
-	public HashSet<Llamada> todosLasLlamadas() {
-		return llamadas;
-	}
-
-	@Override
 	public HashSet<Llamada> todasLasLlamadasPorCliente(String nif) {
 		Iterator<Cliente> it = clientes.iterator();
 		while (it.hasNext()) {
-			if (nif.equals(it.next().getNif())) {
+			Cliente cliente = it.next();
+			if (nif.equals(cliente.getNif())) {
 				// Encontrar referencia al cliente
-				Cliente propietario = it.next();
+				Cliente propietario = cliente;
 
 				// Crear nuevo HashSet para enviar
 				HashSet<Llamada> llamadasCliente = new HashSet<Llamada>();
@@ -104,8 +100,9 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 				// Rellenar nuevo HashSet con la informacion pertiente
 				Iterator<Llamada> ll = llamadas.iterator();
 				while (ll.hasNext()) {
-					if (propietario.equals(ll.next().getCliente())) {
-						llamadasCliente.add(ll.next());
+					Llamada llamadaCliente = ll.next();
+					if (propietario.equals(llamadaCliente.getCliente())) {
+						llamadasCliente.add(llamadaCliente);
 					}
 				}
 				return llamadasCliente;

@@ -14,8 +14,6 @@ public interface InterrogaModelo {
 
     HashSet<Cliente> todosLosClientes();
 
-    HashSet<Llamada> todosLasLlamadas();
-
     HashSet<Llamada> todasLasLlamadasPorCliente(String nif);
 
     HashSet<Factura> todasLasFacturasPorCliente(String nif);

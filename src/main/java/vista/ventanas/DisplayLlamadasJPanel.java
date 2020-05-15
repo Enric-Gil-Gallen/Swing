@@ -2,6 +2,7 @@ package vista.ventanas;
 
 import modelo.ImplementacionModelo;
 import modelo.datos.Cliente;
+import modelo.datos.Llamada;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,39 +40,30 @@ public class DisplayLlamadasJPanel extends JPanel implements ActionListener {
         panelList.add(table);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == byid) {
-            if(textfield.getText().isEmpty()||textfield.getText().compareTo("")==0){
-                JOptionPane.showMessageDialog(this,
-                        "Campo Vacio");
-            }else {
-                panelList.removeAll();
-                data = new Vector<String>();
-                Cliente cl = modelo.darCliente(textfield.getText());
-                String cli = cl.toString();
-                data.add(cli);
-                table = new JList<>(data);
-                panelList.add(table);
-                add(panelList);
-                panelList.revalidate();
-                panelList.repaint();
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == byid) {
+                if(textfield.getText().isEmpty()||textfield.getText().compareTo("")==0){
+                    JOptionPane.showMessageDialog(this,
+                            "El campo DNI esta vacio");
+                }else {
+                    data.clear();
+                    panelList.removeAll();
+                    HashSet<Llamada> cl = modelo.todasLasLlamadasPorCliente(labelByID.getText());
+                    if (cl != null){
+                        for (Llamada actual : cl) {
+                            data.add(actual.toString());
+                        }
+                        table = new JList<>(data);
+                        panelList.add(table);
+                        add(panelList);
+                        panelList.revalidate();
+                        panelList.repaint();
+                    }else {
+                        JOptionPane.showMessageDialog(this,
+                                "El DNI no coincide con nigun cliente creado previamente");
+                    }
+                }
             }
         }
-
-        if ((e.getSource() == all)) {
-            panelList.removeAll();
-            HashSet<Cliente> clientes = modelo.todosLosClientes();
-            data.clear();
-            for (Cliente actual : clientes) {
-                String cli = actual.toString();
-                data.add(cli);
-            }
-            table = new JList<>(data);
-            panelList.add(table);
-            add(panelList);
-            panelList.revalidate();
-            panelList.repaint();
-        }
-    }
 }
