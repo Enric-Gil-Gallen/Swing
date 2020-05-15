@@ -47,7 +47,7 @@ public class DisplayLlamadasJPanel extends JPanel implements ActionListener {
                 }else {
                     data.clear();
                     panelList.removeAll();
-                    HashSet<Llamada> cl = modelo.todasLasLlamadasPorCliente(labelByID.getText());
+                    HashSet<Llamada> cl = modelo.todasLasLlamadasPorCliente(textfield.getText());
                     if (cl != null){
                         for (Llamada actual : cl) {
                             data.add(actual.toString());
