@@ -1,6 +1,8 @@
 package vista.ventanas;
 
+import controlador.ImplementacionControlador;
 import modelo.datos.Tarifa;
+import modelo.datos.TarifaBasica;
 import modelo.datos.TarifaDia;
 import modelo.datos.TarifasHoras;
 
@@ -16,8 +18,10 @@ public class TarifaCreatorJPanel extends JPanel implements ActionListener {
     JLabel importeL, nombreL, diaL, importeEspL, hInitL, hFinishL, importeEL;
     JButton save;
     JPanel content, days, hour, basicP;
+    private ImplementacionControlador controlador;
 
-    public TarifaCreatorJPanel() {
+    public TarifaCreatorJPanel(ImplementacionControlador controlador ) {
+        this.controlador = controlador;
         setPreferredSize( new Dimension( 1080, 1080 ));
         JPanel panel = new JPanel();
         content = new JPanel();
@@ -97,17 +101,20 @@ public class TarifaCreatorJPanel extends JPanel implements ActionListener {
             String name = nombre.getText();
             double importe =Double.parseDouble(importeT.getText());
             if ("basic".equals(e.getActionCommand())) {
-
+                TarifaBasica tarifaBasica = new TarifaBasica(importe, name);
+                controlador.nuevoTarifa(tarifaBasica);
             } else if ("horas".equals(e.getActionCommand())) {
                 double importeESp=Double.parseDouble(importeEspT.getText());
                 int diaEsd=Integer.parseInt(diaT.getText());
                 TarifaDia tarifasDia =new TarifaDia(importe,name,importeESp,diaEsd);
+                controlador.nuevoTarifa(tarifasDia);
 
             } else {
                 double importeESp=Double.parseDouble(importeEspT.getText());
                 int horINit=Integer.parseInt(hInitT.getText());
                 int horFin=Integer.parseInt(hFinishT.getText());
                 TarifasHoras tarifasHoras = new TarifasHoras(importe, name,horINit,horFin, importeESp);
+                controlador.nuevoTarifa(tarifasHoras);
             }
         }
         if (e.getSource() == basic) {
