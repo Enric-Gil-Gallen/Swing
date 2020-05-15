@@ -7,12 +7,12 @@ import java.util.HashSet;
 public class Llamada  implements Serializable {
     private static final long serialVersionUID = 42L;
     int numeroTelefono;
-    Integer horaInicio;
-    private Integer dia;
+    int horaInicio;
+    private int dia;
     int duración;
     Cliente cliente;
 
-    public Llamada(int numeroTelefono, Integer horaInicio, Integer dia, int duración, Cliente cliente) {
+    public Llamada(int numeroTelefono, int horaInicio, int dia, int duración, Cliente cliente) {
         this.numeroTelefono = numeroTelefono;
         this.horaInicio = horaInicio;
         this.dia = dia;
