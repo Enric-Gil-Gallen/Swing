@@ -24,12 +24,10 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 		this.vista = vista;
 	}
 
-
 	@Override
 	public void nuevoClienta(Cliente cliente) {
 		clientes.add(cliente);
 	}
-
 
 	@Override
 	public void nuevoTarifa(Tarifa farifa) {
@@ -77,6 +75,24 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 		}
 		return null;
 	}
+
+	@Override
+	public Tarifa darTarifa(Cliente cliente) {
+		Iterator<Factura> it = facturas.iterator();
+		while(it.hasNext()){
+			Factura cli = it.next();
+			if (cliente.getNif() == cli.getCliente().getNif()){
+				return cli.getTarifa();
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public HashSet<Llamada> todasLasLlamadas() {
+		return llamadas;
+	}
+
 
 	@Override
 	public HashSet<Cliente> todosLosClientes() {

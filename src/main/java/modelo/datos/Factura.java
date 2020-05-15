@@ -9,19 +9,18 @@ public class Factura implements Serializable {
     private ImplementacionModelo modelo;
     double importe;
     Cliente cliente;
-    Date fechaE;
+    String fechaE;
     Tarifa tarifa;
     UUID id;
     int periodo;
     private static final long serialVersionUID = 42L;
 
-    public Factura(Cliente cliente, Date fechaE, Tarifa tarifa, int periodo, HashSet<Llamada> llamadas) {
+    public Factura(Cliente cliente, String fechaE, Tarifa tarifa, int periodo, double importe) {
         this.cliente = cliente;
         this.fechaE = fechaE;
         this.tarifa = tarifa;
         this.periodo = periodo;
-        modelo = new ImplementacionModelo();
-        importe = modelo.calcularImporte(llamadas, cliente, tarifa);
+        this.importe = importe;
         id = UUID.randomUUID();
 
     }
@@ -39,7 +38,7 @@ public class Factura implements Serializable {
         return importe;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fechaE;
     }
 

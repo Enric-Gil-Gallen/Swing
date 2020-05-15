@@ -159,7 +159,7 @@ public class ImplementacionVista extends JFrame implements ActionListener {
         }
         if (e.getSource() == newFactura) {
             content.removeAll();
-            content.add(new NewFactureJPanel(controlador));
+            content.add(new NewFactureJPanel(controlador, modelo));
             pack();
             content.setVisible(true);
         }
@@ -177,7 +177,7 @@ public class ImplementacionVista extends JFrame implements ActionListener {
         }
         if (e.getSource() == displayLLamadas) {
             content.removeAll();
-            content.add(new NewFactureJPanel(controlador));
+            content.add(new NewFactureJPanel(controlador, modelo));
             pack();
             content.setVisible(true);
         }

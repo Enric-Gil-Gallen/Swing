@@ -12,6 +12,10 @@ public interface InterrogaModelo {
 
     Cliente darCliente(String nif);
 
+    Tarifa darTarifa(Cliente cliente);
+
+    HashSet<Llamada> todasLasLlamadas();
+
     HashSet<Cliente> todosLosClientes();
 
     HashSet<Llamada> todasLasLlamadasPorCliente(String nif);
