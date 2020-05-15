@@ -48,10 +48,9 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 
 	@Override
 	public void borrarCliente(String nif) {
-		Iterator<Cliente> it = clientes.iterator();
-		while(it.hasNext()){
-			if (nif.equals(it.next().getNif())){
-				clientes.remove(it.next());
+		for (Cliente cliente : clientes){
+			if (nif.equals(cliente.getNif())){
+				clientes.remove(cliente);
 			}
 		}
 	}
@@ -59,10 +58,9 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 	@Override
 	// Primero areglar la Clase tarifa, luego cambiar todos los datos necesarios
 	public void cambiarTarifa(String nif, Tarifa tarifa) {
-		Iterator<Cliente> it = clientes.iterator();
-		while(it.hasNext()){
-			if (nif.equals(it.next().getNif())){
-				it.next().setTarifa(tarifa);
+		for (Cliente cliente : clientes){
+			if (nif.equals(cliente.getNif())){
+				cliente.setTarifa(tarifa);
 			}
 		}
 	}
@@ -115,9 +113,10 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 	public HashSet<Factura> todasLasFacturasPorCliente(String nif) {
 		Iterator<Cliente> it = clientes.iterator();
 		while (it.hasNext()) {
-			if (nif.equals(it.next().getNif())) {
+			Cliente ita = it.next();
+			if (nif.equals(ita.getNif())) {
 				// Encontrar referencia al cliente
-				Cliente propietario = it.next();
+				Cliente propietario = ita;
 
 				// Crear nuevo HashSet para enviar
 				HashSet<Factura> facturasCliente = new HashSet<Factura>();
@@ -125,8 +124,9 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 				// Rellenar nuevo HashSet con la informacion pertiente
 				Iterator<Factura> ll = facturas.iterator();
 				while (ll.hasNext()) {
-					if (propietario.equals(ll.next().getCliente())) {
-						facturasCliente.add(ll.next());
+					Factura fac = ll.next();
+					if (propietario.equals(fac.getCliente())) {
+						facturasCliente.add(fac);
 					}
 				}
 				return facturasCliente;
