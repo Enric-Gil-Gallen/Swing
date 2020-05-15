@@ -87,7 +87,7 @@ public class ShowClientJPanel extends JPanel implements ActionListener, ShowClie
             }
             else {
                 JOptionPane.showMessageDialog(this,
-                        "Deves crear los clientes previamente");
+                        "Debes crear los clientes previamente");
             }
         }
     }

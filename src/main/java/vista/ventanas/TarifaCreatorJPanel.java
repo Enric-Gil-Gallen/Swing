@@ -99,22 +99,28 @@ public class TarifaCreatorJPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == save) {
             String name = nombre.getText();
-            double importe =Double.parseDouble(importeT.getText());
-            if ("basic".equals(e.getActionCommand())) {
-                TarifaBasica tarifaBasica = new TarifaBasica(importe, name);
-                controlador.nuevoTarifa(tarifaBasica);
-            } else if ("horas".equals(e.getActionCommand())) {
-                double importeESp=Double.parseDouble(importeEspT.getText());
-                int diaEsd=Integer.parseInt(diaT.getText());
-                TarifaDia tarifasDia =new TarifaDia(importe,name,importeESp,diaEsd);
-                controlador.nuevoTarifa(tarifasDia);
-
-            } else {
-                double importeESp=Double.parseDouble(importeEspT.getText());
+            double importe = Double.parseDouble(importeT.getText());
+            if ("horas".equals(e.getActionCommand())) {
+                double importeESp = Double.parseDouble(importeET.getText());
                 int horINit=Integer.parseInt(hInitT.getText());
                 int horFin=Integer.parseInt(hFinishT.getText());
                 TarifasHoras tarifasHoras = new TarifasHoras(importe, name,horINit,horFin, importeESp);
                 controlador.nuevoTarifa(tarifasHoras);
+                JOptionPane.showMessageDialog(getParent(),
+                        "Tarifa horas creada");
+            } else if ("dias".equals(e.getActionCommand())) {
+                double importeESp = Double.parseDouble(importeEspT.getText());
+                int diaEsd=Integer.parseInt(diaT.getText());
+                TarifaDia tarifasDia =new TarifaDia(importe,name,importeESp,diaEsd);
+                controlador.nuevoTarifa(tarifasDia);
+                JOptionPane.showMessageDialog(getParent(),
+                        "Tarifa dias creada");
+
+            } else {
+                TarifaBasica tarifaBasica = new TarifaBasica(importe, name);
+                controlador.nuevoTarifa(tarifaBasica);
+                JOptionPane.showMessageDialog(getParent(),
+                        "Tarifa basica creada");
             }
         }
         if (e.getSource() == basic) {

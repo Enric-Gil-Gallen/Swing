@@ -20,7 +20,6 @@ public class ImplementacionVista extends JFrame implements ActionListener {
     JMenuItem deleteClientMI;
     JMenuItem showClientMI;
     JMenuItem tarifacreator;
-    JMenuItem displayTarifas;
     JMenuItem newFactura;
     JMenuItem newLlamada;
     JMenuItem displayFactura;
@@ -71,11 +70,8 @@ public class ImplementacionVista extends JFrame implements ActionListener {
         //Submenu tarifa
 
         tarifacreator = new JMenuItem("Creador de Tarifas");
-        displayTarifas = new JMenuItem("Mostrar Traifas");
         tarifacreator.addActionListener(this);
-        displayTarifas.addActionListener(this);
         tarifaMenu.add(tarifacreator);
-        tarifaMenu.add(displayTarifas);
         menuBar.add(tarifaMenu);
 
         // Submenu Factura y Llamada
@@ -147,13 +143,7 @@ public class ImplementacionVista extends JFrame implements ActionListener {
         }
         if (e.getSource() == tarifacreator) {
             content.removeAll();
-            content.add(new TarifaCreatorJPanel());
-            pack();
-            content.setVisible(true);
-        }
-        if (e.getSource() == displayTarifas) {
-            content.removeAll();
-            content.add(new TarifaCreatorJPanel());
+            content.add(new TarifaCreatorJPanel(controlador));
             pack();
             content.setVisible(true);
         }

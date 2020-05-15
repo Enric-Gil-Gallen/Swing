@@ -31,6 +31,8 @@ public class DeleteClientJPanel extends JPanel implements ActionListener {
         if(e.getSource()== button){
             String idS=id.getText();
             controlador.borrarCliente(idS);
+            JOptionPane.showMessageDialog(getParent(),
+                    "Cliente borrado");
         }
     }
 }
