@@ -4,6 +4,7 @@ import modelo.ImplementacionModelo;
 import modelo.datos.Cliente;
 import modelo.datos.Empresa;
 import modelo.datos.Particular;
+import vista.ImplementacionVista;
 import vista.interfacesVentanas.cojerDatosModelo.ShowClientPanel;
 
 import javax.swing.*;
@@ -20,8 +21,8 @@ public class ShowClientJPanel extends JPanel implements ActionListener, ShowClie
     private ImplementacionModelo modelo;
     Vector<String> data;
 
-    public ShowClientJPanel() {
-        modelo = new ImplementacionModelo();
+    public ShowClientJPanel(ImplementacionModelo modelo) {
+        this.modelo = modelo;
         labelByID = new JLabel("Introduce el nif/cif del cliente");
         add(labelByID);
         textfield = new JTextField();

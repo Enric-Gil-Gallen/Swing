@@ -21,17 +21,12 @@ public class NewClientJPanel extends JPanel {
     boolean business;
     private Tarifa tarifaT;
 
-    private ImplementacionModelo modelo;
+    private ImplementacionControlador controlador;
 
-    public void setModelo(ImplementacionModelo modelo) {
-        this.modelo = modelo;
-    }
-    public ImplementacionControlador controlador;
-
-    public NewClientJPanel() {
+    public NewClientJPanel(ImplementacionControlador controlador) {
+        this.controlador = controlador;
         //tarifaT = new Tarifa(2,2);// Añadir campos de tarifas disponible
         button = new JButton("Ok");
-        controlador = new ImplementacionControlador();
         button.addActionListener( new EscuchadorBoton()); // Conctar con la clase Interna
         String stringF = business ? "CIF" : "NIF";
         nifL = new JLabel(stringF);
@@ -80,6 +75,7 @@ public class NewClientJPanel extends JPanel {
     class EscuchadorBoton implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             Particular particular = new Particular(nifT.getText(), nombreT.getText(), surnameT.getText(), emailT.getText(), Calendar.getInstance().getTime(), tarifaT, direccionT.getText(), cpT.getText(), provinciaT.getText(), poblacionT.getText());
+            System.out.println(nifT.getText());
             controlador.nuevoClienta(particular);
         }
     }

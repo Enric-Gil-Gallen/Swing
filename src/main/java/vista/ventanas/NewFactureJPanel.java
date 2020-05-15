@@ -14,8 +14,8 @@ public class NewFactureJPanel extends JPanel {
     JButton button;
     private ImplementacionControlador controlador;
 
-    public NewFactureJPanel() {
-        controlador = new ImplementacionControlador();
+    public NewFactureJPanel(ImplementacionControlador controlador) {
+        this.controlador = controlador;
         button = new JButton("OK");
         nifT = new JTextField();
         nifL = new JLabel("NIF/CIF");

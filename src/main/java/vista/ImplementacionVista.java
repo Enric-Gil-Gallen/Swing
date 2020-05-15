@@ -2,6 +2,8 @@ package vista;
 
 //import org.omg.PortableServer.IMPLICIT_ACTIVATION_POLICY_ID;
 
+import controlador.ImplementacionControlador;
+import modelo.ImplementacionModelo;
 import vista.ventanas.*;
 
 import javax.swing.*;
@@ -23,9 +25,12 @@ public class ImplementacionVista extends JFrame implements ActionListener {
     JMenuItem newLlamada;
     JMenuItem displayFactura;
     JMenuItem displayLLamadas;
-
+    private ImplementacionModelo modelo;
+    private ImplementacionControlador controlador;
 
     public ImplementacionVista() {
+        modelo = new ImplementacionModelo();
+        controlador = new ImplementacionControlador(modelo);
         setTitle("Practica 4");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1080, 720);
@@ -118,25 +123,25 @@ public class ImplementacionVista extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == newPartMI) {
             content.removeAll();
-            content.add(new NewClientJPanel());
+            content.add(new NewClientJPanel(controlador));
             pack();
             content.setVisible(true);
         }
         if (e.getSource() == newEnterpMI) {
             content.removeAll();
-            content.add(new NewBussinesJPanel());
+            content.add(new NewBussinesJPanel(controlador));
             pack();
             content.setVisible(true);
         }
         if (e.getSource() == deleteClientMI) {
             content.removeAll();
-            content.add(new DeleteClientJPanel());
+            content.add(new DeleteClientJPanel(controlador));
             pack();
             content.setVisible(true);
         }
         if (e.getSource() == showClientMI) {
             content.removeAll();
-            content.add(new ShowClientJPanel());
+            content.add(new ShowClientJPanel(modelo));
             pack();
             content.setVisible(true);
         }
@@ -154,7 +159,7 @@ public class ImplementacionVista extends JFrame implements ActionListener {
         }
         if (e.getSource() == newFactura) {
             content.removeAll();
-            content.add(new NewFactureJPanel());
+            content.add(new NewFactureJPanel(controlador));
             pack();
             content.setVisible(true);
         }

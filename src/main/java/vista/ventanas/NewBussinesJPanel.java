@@ -2,6 +2,7 @@ package vista.ventanas;
 
 import controlador.Controlador;
 import controlador.ImplementacionControlador;
+import modelo.ImplementacionModelo;
 import modelo.datos.Empresa;
 import modelo.datos.Particular;
 import modelo.datos.Tarifa;
@@ -22,14 +23,13 @@ public class NewBussinesJPanel extends JPanel {
     JButton button;
     boolean business;
     private Tarifa tarifaT;
-
     public ImplementacionControlador controlador;
 
 
-    public NewBussinesJPanel() {
+    public NewBussinesJPanel(ImplementacionControlador controlador) {
+        this.controlador = controlador;
         //Tarifa tarifaT = new TarifaDia();// Añadir campos de tarifas disponible
         button= new JButton("Ok"); //Crear boton
-        controlador = new ImplementacionControlador();
         button.addActionListener( new EscuchadorBoton()); // Conctar con la clase Interna
         String stringF= business ? "CIF" : "NIF";
         nifL= new JLabel(stringF);

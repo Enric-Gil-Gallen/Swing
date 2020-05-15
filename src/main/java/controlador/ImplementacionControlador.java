@@ -12,15 +12,13 @@ import vista.InterrogaVista;
 import java.util.HashSet;
 
 public class ImplementacionControlador implements Controlador {
-	private InterrogaVista vista;
+	private ImplementacionVista vista;
 	private ImplementacionModelo modelo;
 
-	public ImplementacionControlador() {
-		modelo = new ImplementacionModelo();
-		//vista = new InterrogaVista() {
+	public ImplementacionControlador(ImplementacionModelo modelo) {
+		this.modelo = modelo;
 	}
-
-	public void setVista(InterrogaVista vista) {
+	public void setVista(ImplementacionVista vista) {
 		this.vista = vista;
 	}
 
@@ -32,20 +30,17 @@ public class ImplementacionControlador implements Controlador {
 
 	@Override
 	public void nuevoTarifa(Tarifa farifa) {
-		Tarifa ta = vista.getTarifa();
-		modelo.nuevoTarifa(ta);
+		modelo.nuevoTarifa(farifa);
 	}
 
 	@Override
 	public void nuevoFactura(Factura factura) {
-		Factura tarifa = vista.getFactura();
-		modelo.nuevoFactura(tarifa);
+		modelo.nuevoFactura(factura);
 	}
 
 	@Override
 	public void nuevaLlamada(Llamada llamada) {
-		Llamada llama = vista.getLlamada();
-		modelo.nuevaLlamada(llama);
+		modelo.nuevaLlamada(llamada);
 	}
 
 	@Override
@@ -55,8 +50,6 @@ public class ImplementacionControlador implements Controlador {
 
 	@Override
 	public void cambiarTarifa(String nif, Tarifa tarifa) {
-		String dni = vista.getEntrada();
-		Tarifa tarifa1 = vista.getTarifa();
-		modelo.cambiarTarifa(dni, tarifa1);
+		modelo.cambiarTarifa(nif, tarifa);
 	}
 }
