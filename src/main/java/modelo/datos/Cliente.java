@@ -96,6 +96,7 @@ public class Cliente implements Serializable {
         this.provincia = provincia;
     }
 
+
     @Override
     public String toString() {
         return "Cliente:" +

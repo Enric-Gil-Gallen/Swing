@@ -3,6 +3,7 @@ package modelo.datos;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.UUID;
 
 public class Llamada  implements Serializable {
     private static final long serialVersionUID = 42L;
@@ -19,6 +20,7 @@ public class Llamada  implements Serializable {
         this.duración = duración;
         this.cliente = cliente;
     }
+
 
     public int getNumeroTelefono() {
         return numeroTelefono;

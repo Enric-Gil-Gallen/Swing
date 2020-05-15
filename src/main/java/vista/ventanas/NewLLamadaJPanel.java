@@ -53,14 +53,16 @@ public class NewLLamadaJPanel extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        if(nifT.getText().isEmpty()||nifT.getText().compareTo("")==0){
-            JOptionPane.showMessageDialog(getParent(),
-                    "El DNI es obligatorio para identificar el cliente");
-        }else {
-            Llamada llamada =  new Llamada(Integer.parseInt(numT.getText()), Integer.parseInt(horainicioT.getText()), Integer.parseInt(diaT.getText()), Integer.parseInt(duracionT.getText()), modelo.darCliente(nifT.getText()));
-            controlador.nuevaLlamada(llamada);
-            JOptionPane.showMessageDialog(getParent(),
-                    "Llamada creada");
+        if (e.getSource() == button) {
+            if(nifT.getText().isEmpty()||nifT.getText().compareTo("")==0){
+                JOptionPane.showMessageDialog(getParent(),
+                        "El DNI es obligatorio para identificar el cliente");
+            }else {
+                Llamada llamada =  new Llamada(Integer.parseInt(numT.getText()), Integer.parseInt(horainicioT.getText()), Integer.parseInt(diaT.getText()), Integer.parseInt(duracionT.getText()), modelo.darCliente(nifT.getText()));
+                controlador.nuevaLlamada(llamada);
+                JOptionPane.showMessageDialog(getParent(),
+                        "Llamada creada");
+            }
         }
     }
 
