@@ -1,19 +1,25 @@
 package vista.ventanas;
 
 import controlador.ImplementacionControlador;
+import modelo.ImplementacionModelo;
+import modelo.datos.Llamada;
+import modelo.datos.Particular;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
 
 public class NewLLamadaJPanel extends JPanel implements ActionListener {
     JTextField nifT, numT, horainicioT, diaT, duracionT;
     JLabel nifL, numL, horainicioL, diaL,duracionL;
     JButton button;
     private ImplementacionControlador controlador;
+    private ImplementacionModelo modelo;
 
-    public NewLLamadaJPanel(ImplementacionControlador controlador) {
+    public NewLLamadaJPanel(ImplementacionControlador controlador, ImplementacionModelo modelo) {
+        this.modelo = modelo;
         this.controlador = controlador;
         setPreferredSize( new Dimension( 1080, 720 ));
         button = new JButton("OK");
@@ -42,9 +48,15 @@ public class NewLLamadaJPanel extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        //  Factura factura = new Particular(importT.getText(),/* clienteT.getText(),*/  Calendar.getInstance().getTime() /*,tarifaT.getText()*/, periodoT.getText(), tarifaT, direccionT.getText(), cpT.getText(), provinciaT.getText(), poblacionT.getText());
-        //controlador.nuevaFactura(factura);
-        JOptionPane.showMessageDialog(getParent(),
-                "Llamada creada");
+        if(nifT.getText().isEmpty()||nifT.getText().compareTo("")==0){
+            JOptionPane.showMessageDialog(getParent(),
+                    "El DNI es obligatorio para identificar el cliente");
+        }else {
+            Llamada llamada =  new Llamada(Integer.parseInt(numT.getText()), Integer.parseInt(horainicioT.getText()), Integer.parseInt(diaT.getText()), Integer.parseInt(duracionT.getText()), modelo.darCliente(nifT.getText()));
+            controlador.nuevaLlamada(llamada);
+            JOptionPane.showMessageDialog(getParent(),
+                    "Llamada creada");
+        }
     }
+
 }
