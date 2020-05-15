@@ -75,6 +75,8 @@ public class NewBussinesJPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             Empresa empresa = new Empresa(nifT.getText(),nombreT.getText(),emailT.getText(),Calendar.getInstance().getTime(), tarifaT, direccionT.getText(),cpT.getText(),provinciaT.getText(), poblacionT.getText());
             controlador.nuevoClienta(empresa);
+            JOptionPane.showMessageDialog(getParent(),
+                    "Empresa creada");
             }
 
     }
