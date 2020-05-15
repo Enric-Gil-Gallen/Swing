@@ -1,5 +1,9 @@
 package vista.ventanas;
 
+import modelo.datos.Tarifa;
+import modelo.datos.TarifaDia;
+import modelo.datos.TarifasHoras;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,12 +23,16 @@ public class TarifaCreatorJPanel extends JPanel implements ActionListener {
         content = new JPanel();
         group = new ButtonGroup();
         basic = new JRadioButton("Basica", true);
+        basic.setActionCommand("basic");
         basic.addActionListener(this);
         group.add(basic);
         byhours = new JRadioButton("Por horas");
+        byhours.setActionCommand("horas");
         byhours.addActionListener(this);
         group.add(byhours);
         bydays = new JRadioButton("Por dias");
+        bydays.setActionCommand("dias");
+        bydays.addActionListener(this);
         group.add(bydays);
 
         panel.add(basic);
@@ -36,6 +44,8 @@ public class TarifaCreatorJPanel extends JPanel implements ActionListener {
         basicP = new JPanel();
         basicP.setBorder(BorderFactory.createLineBorder(Color.black));
         panel.setBorder(BorderFactory.createLineBorder(Color.black));
+        nombreL =new JLabel("Nombre de la tarifa");
+        add(nombreL);
         nombre = new JTextField();
         nombre.setPreferredSize(new Dimension(200, 24));
         add(nombre);
@@ -48,16 +58,27 @@ public class TarifaCreatorJPanel extends JPanel implements ActionListener {
         days = new JPanel();
         diaT = new JTextField();
         diaT.setPreferredSize(new Dimension(200, 24));
+        diaL = new JLabel("Dia especial");
+        days.add(diaL);
+
+        importeEspL =new JLabel("Importe del dia especial");
+        days.add(importeEspL);
         importeEspT = new JTextField();
         importeEspT.setPreferredSize(new Dimension(200, 24));//importe
         days.add(diaT);
         days.add(importeEspT);
         //hour
         hour = new JPanel();
+        hInitL = new JLabel("Hora inicial (24h)");
+        hour.add(hInitL);
         hInitT = new JTextField();
         hInitT.setPreferredSize(new Dimension(200, 24));
+        hFinishL= new JLabel("Hora final (24h)");
+        hour.add(hInitL);
         hFinishT = new JTextField();
         hFinishT.setPreferredSize(new Dimension(200, 24));
+        importeEL = new JLabel("Importe durante el periodo especial");
+        hour.add(importeEL);
         importeET = new JTextField();
         importeET.setPreferredSize(new Dimension(200, 24)); //importe
         hour.add(hInitT);
@@ -72,8 +93,22 @@ public class TarifaCreatorJPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == save) {
+        if (e.getSource() == basic) {
+            String name = nombre.getText();
+            double importe =Double.parseDouble(importeT.getText());
+            if ("basic".equals(e.getActionCommand())) {
+                
+            } else if ("horas".equals(e.getActionCommand())) {
+                double importeESp=Double.parseDouble(importeEspT.getText());
+                int diaEsd=Integer.parseInt(diaT.getText());
+                TarifaDia tarifasDia =new TarifaDia(importe,name,importeESp,diaEsd);
 
+            } else {
+                double importeESp=Double.parseDouble(importeEspT.getText());
+                int horINit=Integer.parseInt(hInitT.getText());
+                int horFin=Integer.parseInt(hFinishT.getText());
+                TarifasHoras tarifasHoras = new TarifasHoras(importe, name,horINit,horFin, importeESp);
+            }
         }
         if (e.getSource() == basic) {
             content.removeAll();
