@@ -77,6 +77,8 @@ public class NewClientJPanel extends JPanel {
             Particular particular = new Particular(nifT.getText(), nombreT.getText(), surnameT.getText(), emailT.getText(), Calendar.getInstance().getTime(), tarifaT, direccionT.getText(), cpT.getText(), provinciaT.getText(), poblacionT.getText());
             System.out.println(nifT.getText());
             controlador.nuevoClienta(particular);
+            JOptionPane.showMessageDialog(getParent(),
+                    "Particular creado");
         }
     }
 }
