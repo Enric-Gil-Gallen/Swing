@@ -24,11 +24,11 @@ public class ShowClientJPanel extends JPanel implements ActionListener, ShowClie
 
     public ShowClientJPanel(ImplementacionModelo modelo) {
         this.modelo = modelo;
-        setPreferredSize( new Dimension( 1080, 720 ));
+        setPreferredSize( new Dimension( 1080, 1080 ));
         labelByID = new JLabel("Introduce el nif/cif del cliente");
         add(labelByID);
         textfield = new JTextField();
-        textfield.setPreferredSize( new Dimension( 200, 24 ) );
+        textfield.setPreferredSize( new Dimension( 120, 24 ) );
         add(textfield);
         byid = new JButton("Buscar");
         byid.addActionListener(this);
