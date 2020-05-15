@@ -56,7 +56,6 @@ public class ShowClientJPanel extends JPanel implements ActionListener, ShowClie
                 panelList.removeAll();
                 Cliente cl = modelo.darCliente(textfield.getText());
                 if (cl != null){
-                    System.out.println(cl.toString());
                     data.add(cl.toString());
                     table = new JList<>(data);
                     panelList.add(table);

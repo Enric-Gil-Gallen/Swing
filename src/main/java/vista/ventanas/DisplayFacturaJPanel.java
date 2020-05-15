@@ -2,6 +2,7 @@ package vista.ventanas;
 
 import modelo.ImplementacionModelo;
 import modelo.datos.Cliente;
+import modelo.datos.Factura;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,8 +21,8 @@ public class DisplayFacturaJPanel extends JPanel implements ActionListener {
     Vector<String> data;
 
 
-    public DisplayFacturaJPanel() {
-        modelo = new ImplementacionModelo();
+    public DisplayFacturaJPanel(ImplementacionModelo modelo) {
+        this.modelo = modelo;
         setPreferredSize( new Dimension( 1080, 720 ));
         labelByID = new JLabel("Introduce el nif/cif del cliente");
         add(labelByID);
@@ -47,33 +48,24 @@ public class DisplayFacturaJPanel extends JPanel implements ActionListener {
                 JOptionPane.showMessageDialog(this,
                         "Campo Vacio");
             }else{
+                data.clear();
                 panelList.removeAll();
-                data = new Vector<String>();
-                Cliente cl = modelo.darCliente(labelByID.getText());
-                String cli = cl.toString();
-                data.add(cli);
-                table = new JList<>(data);
-                panelList.add(table);
-                add(panelList);
-                panelList.revalidate();
-                panelList.repaint();
-            }
+                HashSet<Factura> facturas = modelo.todasLasFacturasPorCliente(textfield.getText());
+                if (facturas.isEmpty() == false){
+                    for (Factura actual : facturas) {
+                        data.add(actual.toString());
+                    }
+                    table = new JList<>(data);
+                    panelList.add(table);
+                    add(panelList);
+                    panelList.revalidate();
+                    panelList.repaint();
+                }else {
+                    JOptionPane.showMessageDialog(this,
+                            "El DNI no coincide con niguno creado previamente");
+                }
 
-        }
-
-        if ((e.getSource() == all)) {
-            panelList.removeAll();
-            HashSet<Cliente> clientes = modelo.todosLosClientes();
-            data.clear();
-            for (Cliente actual : clientes) {
-                String cli = actual.toString();
-                data.add(cli);
             }
-            table = new JList<>(data);
-            panelList.add(table);
-            add(panelList);
-            panelList.revalidate();
-            panelList.repaint();
         }
     }
 }

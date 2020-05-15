@@ -161,7 +161,7 @@ public class ImplementacionVista extends JFrame implements ActionListener {
         }
         if (e.getSource() == displayFactura) {
             content.removeAll();
-            content.add(new DisplayFacturaJPanel());
+            content.add(new DisplayFacturaJPanel(modelo));
             pack();
             content.setVisible(true);
         }
