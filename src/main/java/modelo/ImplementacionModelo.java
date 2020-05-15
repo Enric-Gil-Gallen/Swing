@@ -165,21 +165,19 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 		// º1 -- Crear resultado
 		float resultado = -1;
 
-		// 2º -- Sacar los datos dependiendo de la tarifa
-/*
-		if (tarifa instanceof TarifaDia){
-			tarifa = ((TarifaDia) tarifa).getDia();
-		}
-*/
-		// º3 -- Recorer todas las llamadas en las que coincida el cliente
+		// º2 -- Recorer todas las llamadas en las que coincida el cliente
 		Iterator<Llamada> it = llamadas.iterator();
 		while(it.hasNext()) {
 			Llamada ll = it.next();
-			// 4º -- Ir calculadon importe dependiendo de del tipo de tarifa
+			// 3º -- Ir calculadon importe dependiendo de del tipo de tarifa
 			if (ll.getCliente() == cliente){
+
 				if (cliente.getTarifa() instanceof TarifaDia) {
 					if (ll.getDia() != ((TarifaDia) tarifa).getDia()){
-						resultado += ll.getDuración() * tarifa.getPrecio();;
+						resultado += (ll.getDuración() * ((TarifaDia) tarifa).getPrecioFuera());;
+					}
+					else {
+						resultado += (ll.getDuración() * ((TarifaDia) tarifa).getPrecioEspecial());
 					}
 				}
 				else if (cliente.getTarifa() instanceof TarifasHoras){
@@ -190,17 +188,16 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 					*/
 
 					Integer llamadaHorasInicio = (ll.getHoraInicio() / 3600);
-
 					Integer tarifaHorasInicio = ((TarifasHoras) tarifa).getHoraInicio() / 3600;
 
 					if (llamadaHorasInicio == tarifaHorasInicio){
-						resultado += ll.getDuración() * ((TarifasHoras) tarifa).getPrecioEspecial();
+						resultado += (ll.getDuración() * ((TarifasHoras) tarifa).getPrecioEspecial());
 					}else {
-						resultado += ll.getDuración() * tarifa.getPrecio();
+						resultado += (ll.getDuración() * ((TarifasHoras) tarifa).getPrecioFuera());
 					}
 				}
 				else {
-					resultado += ll.getDuración() * tarifa.getPrecio();
+					resultado += (ll.getDuración() * tarifa.getPrecio());
 				}
 			}
 		}
