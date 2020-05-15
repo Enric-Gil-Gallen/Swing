@@ -12,6 +12,7 @@ import java.util.Vector;
 public class DisplayLlamadasJPanel extends JPanel implements ActionListener {
     JPanel panelList;
     JLabel labelByID;
+    JTextField textfield;
     JButton all, byid;
     JList<String> table;
     private ImplementacionModelo modelo;
@@ -21,6 +22,8 @@ public class DisplayLlamadasJPanel extends JPanel implements ActionListener {
         modelo = new ImplementacionModelo();
         labelByID = new JLabel("Introduce el nif/cif del cliente");
         add(labelByID);
+        textfield = new JTextField();
+        add(textfield);
         byid = new JButton("Buscar");
         byid.addActionListener(this);
         add(byid);
@@ -37,16 +40,21 @@ public class DisplayLlamadasJPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == byid) {
-            panelList.removeAll();
-            data = new Vector<String>();
-            Cliente cl = modelo.darCliente(labelByID.getText());
-            String cli = cl.toString();
-            data.add(cli);
-            table = new JList<>(data);
-            panelList.add(table);
-            add(panelList);
-            panelList.revalidate();
-            panelList.repaint();
+            if(textfield.getText().isEmpty()||textfield.getText().compareTo("")==0){
+                JOptionPane.showMessageDialog(this,
+                        "Campo Vacio");
+            }else {
+                panelList.removeAll();
+                data = new Vector<String>();
+                Cliente cl = modelo.darCliente(textfield.getText());
+                String cli = cl.toString();
+                data.add(cli);
+                table = new JList<>(data);
+                panelList.add(table);
+                add(panelList);
+                panelList.revalidate();
+                panelList.repaint();
+            }
         }
 
         if ((e.getSource() == all)) {
