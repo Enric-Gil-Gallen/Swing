@@ -72,8 +72,9 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 	public Cliente darCliente(String nif) {
 		Iterator<Cliente> it = clientes.iterator();
 		while(it.hasNext()){
-			if (nif.equals(it.next().getNif())){
-				return it.next();
+			Cliente cli = it.next();
+			if (nif.equals(cli.getNif())){
+				return cli;
 			}
 		}
 		return null;

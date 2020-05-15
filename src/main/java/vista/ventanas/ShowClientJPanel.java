@@ -8,6 +8,7 @@ import vista.ImplementacionVista;
 import vista.interfacesVentanas.cojerDatosModelo.ShowClientPanel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
@@ -26,6 +27,7 @@ public class ShowClientJPanel extends JPanel implements ActionListener, ShowClie
         labelByID = new JLabel("Introduce el nif/cif del cliente");
         add(labelByID);
         textfield = new JTextField();
+        textfield.setPreferredSize( new Dimension( 200, 24 ) );
         add(textfield);
         byid = new JButton("Buscar");
         byid.addActionListener(this);
@@ -42,38 +44,50 @@ public class ShowClientJPanel extends JPanel implements ActionListener, ShowClie
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        data = new Vector<String>();
 
         if (e.getSource() == byid) {
             if(textfield.getText().isEmpty()||textfield.getText().compareTo("")==0){
                 JOptionPane.showMessageDialog(this,
                         "El campo DNI esta vacio");
             }else {
+                data.clear();
                 panelList.removeAll();
-                data = new Vector<String>();
                 Cliente cl = modelo.darCliente(textfield.getText());
-                String cli = cl.toString();
-                data.add(cli);
+                if (cl != null){
+                    System.out.println(cl.toString());
+                    data.add(cl.toString());
+                    table = new JList<>(data);
+                    panelList.add(table);
+                    add(panelList);
+                    panelList.revalidate();
+                    panelList.repaint();
+                }else {
+                    JOptionPane.showMessageDialog(this,
+                            "El DNI no coincide con niguno creado previamente");
+                }
+            }
+        }
+
+        if ((e.getSource() == all)) {
+            data.clear();
+            panelList.removeAll();
+            HashSet<Cliente> clientes = modelo.todosLosClientes();
+
+            if (clientes.isEmpty() == false){
+                for (Cliente actual : clientes) {
+                    data.add(actual.toString());
+                }
                 table = new JList<>(data);
                 panelList.add(table);
                 add(panelList);
                 panelList.revalidate();
                 panelList.repaint();
             }
-        }
-
-        if ((e.getSource() == all)) {
-            panelList.removeAll();
-            HashSet<Cliente> clientes = modelo.todosLosClientes();
-            data.clear();
-            for (Cliente actual : clientes) {
-                String cli = actual.toString();
-                data.add(cli);
+            else {
+                JOptionPane.showMessageDialog(this,
+                        "Deves crear los clientes previamente");
             }
-            table = new JList<>(data);
-            panelList.add(table);
-            add(panelList);
-            panelList.revalidate();
-            panelList.repaint();
         }
     }
 
