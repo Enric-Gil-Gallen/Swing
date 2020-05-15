@@ -4,14 +4,12 @@ public class TarifasHoras extends Tarifa {
     int horaInicio;
     int horaFinal;
     private double precioEspecial;
-    private double precioFuera;
 
-    public TarifasHoras(double precio, String ip, int horaInicio, int horaFinal, double precioEspecial, double precioFuera) {
+    public TarifasHoras(double precio, String ip, int horaInicio, int horaFinal, double precioEspecial) {
         super(precio, ip);
         this.horaInicio = horaInicio;
         this.horaFinal = horaFinal;
         this.precioEspecial = precioEspecial;
-        this.precioFuera = precioFuera;
     }
 
     public int getHoraInicio() {
@@ -26,7 +24,4 @@ public class TarifasHoras extends Tarifa {
         return precioEspecial;
     }
 
-    public double getPrecioFuera() {
-        return precioFuera;
-    }
 }

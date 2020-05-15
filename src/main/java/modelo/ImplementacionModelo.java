@@ -188,7 +188,7 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 
 				if (cliente.getTarifa() instanceof TarifaDia) {
 					if (ll.getDia() != ((TarifaDia) tarifa).getDia()){
-						resultado += (ll.getDuración() * ((TarifaDia) tarifa).getPrecioFuera());;
+						resultado += (ll.getDuración() * tarifa.getPrecio());;
 					}
 					else {
 						resultado += (ll.getDuración() * ((TarifaDia) tarifa).getPrecioEspecial());
@@ -207,7 +207,7 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 					if (llamadaHorasInicio == tarifaHorasInicio){
 						resultado += (ll.getDuración() * ((TarifasHoras) tarifa).getPrecioEspecial());
 					}else {
-						resultado += (ll.getDuración() * ((TarifasHoras) tarifa).getPrecioFuera());
+						resultado += (ll.getDuración() * tarifa.getPrecio());
 					}
 				}
 				else {
