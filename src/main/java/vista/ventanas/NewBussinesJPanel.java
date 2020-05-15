@@ -73,11 +73,16 @@ public class NewBussinesJPanel extends JPanel {
     class EscuchadorBoton implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            Empresa empresa = new Empresa(nifT.getText(),nombreT.getText(),emailT.getText(),Calendar.getInstance().getTime(), tarifaT, direccionT.getText(),cpT.getText(),provinciaT.getText(), poblacionT.getText());
-            controlador.nuevoClienta(empresa);
-            JOptionPane.showMessageDialog(getParent(),
-                    "Empresa creada");
+            if(nifT.getText().isEmpty()||nifT.getText().compareTo("")==0){
+                JOptionPane.showMessageDialog(getParent(),
+                        "El DNI es obligatorio");
+            }else {
+                Empresa empresa = new Empresa(nifT.getText(),nombreT.getText(),emailT.getText(),Calendar.getInstance().getTime(), tarifaT, direccionT.getText(),cpT.getText(),provinciaT.getText(), poblacionT.getText());
+                controlador.nuevoClienta(empresa);
+                JOptionPane.showMessageDialog(getParent(),
+                        "Empresa creada");
             }
+        }
 
     }
 

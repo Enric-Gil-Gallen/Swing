@@ -74,11 +74,16 @@ public class NewClientJPanel extends JPanel {
 
     class EscuchadorBoton implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            Particular particular = new Particular(nifT.getText(), nombreT.getText(), surnameT.getText(), emailT.getText(), Calendar.getInstance().getTime(), tarifaT, direccionT.getText(), cpT.getText(), provinciaT.getText(), poblacionT.getText());
-            System.out.println(nifT.getText());
-            controlador.nuevoClienta(particular);
-            JOptionPane.showMessageDialog(getParent(),
-                    "Particular creado");
+            if(nifT.getText().isEmpty()||nifT.getText().compareTo("")==0){
+                JOptionPane.showMessageDialog(getParent(),
+                        "El DNI es obligatorio");
+            }else {
+                Particular particular = new Particular(nifT.getText(), nombreT.getText(), surnameT.getText(), emailT.getText(), Calendar.getInstance().getTime(), tarifaT, direccionT.getText(), cpT.getText(), provinciaT.getText(), poblacionT.getText());
+                System.out.println(nifT.getText());
+                controlador.nuevoClienta(particular);
+                JOptionPane.showMessageDialog(getParent(),
+                        "Particular creado");
+            }
         }
     }
 }

@@ -46,7 +46,7 @@ public class ShowClientJPanel extends JPanel implements ActionListener, ShowClie
         if (e.getSource() == byid) {
             if(textfield.getText().isEmpty()||textfield.getText().compareTo("")==0){
                 JOptionPane.showMessageDialog(this,
-                        "Campo Vacio");
+                        "El campo DNI esta vacio");
             }else {
                 panelList.removeAll();
                 data = new Vector<String>();
