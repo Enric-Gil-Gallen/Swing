@@ -201,44 +201,6 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 				}
 			}
 		}
-/*		if (ll.getCliente() instanceof TarifaDia) {
-				resultado += ll.getDuración() * tarifa.getPrecio();
-			}
-			else if (){
-
-			}
-			else {
-				resultado += ll.getDuración() * tarifa.getPrecio();
-			}
-		if (tipoTarifa == 0){ // 4º -- Ir calculadon importe dependiendo de del tipo de tarifa
-			Iterator<Llamada> it = llamadas.iterator();
-			while(it.hasNext()) {
-				Llamada ll = it.next();
-				if (ll.getCliente() == cliente) {
-					resultado += ll.getDuración() * tarifa.getPrecio();
-				}
-			}
-		}
-		else if(tipoTarifa == 1){ // 4º -- Ir calculadon importe dependiendo de del tipo de tarifa
-			Iterator<Llamada> it = llamadas.iterator();
-			cliente.getTarifa();
-			while(it.hasNext()) {
-				Llamada ll = it.next();
-				if (ll.getCliente() == cliente) {
-
-				}
-			}
-		}
-		else if ((tipoTarifa == 2)){ // 4º -- Ir calculadon importe dependiendo de del tipo de tarifa
-			Iterator<Llamada> it = llamadas.iterator();
-			while(it.hasNext()) {
-				Llamada ll = it.next();
-				if (ll.getCliente() == cliente) {
-
-				}
-			}
-		}
-		*/
 
 		// Resultado
 		return resultado;
