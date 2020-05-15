@@ -15,6 +15,7 @@ public class DeleteClientJPanel extends JPanel implements ActionListener {
 
     public DeleteClientJPanel(ImplementacionControlador controlador) {
         this.controlador = controlador;
+        setPreferredSize( new Dimension( 1080, 720 ));
         deleteL =new JLabel("Introduce el NIF/CiF del cliente");
         add(deleteL);
         id= new JTextField();

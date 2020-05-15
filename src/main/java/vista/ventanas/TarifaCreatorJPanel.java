@@ -1,6 +1,7 @@
 package vista.ventanas;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class TarifaCreatorJPanel extends JPanel {
     ButtonGroup group;
@@ -9,6 +10,7 @@ public class TarifaCreatorJPanel extends JPanel {
     JButton save;
 
     public TarifaCreatorJPanel() {
+        setPreferredSize( new Dimension( 1080, 720 ));
         JPanel panel = new JPanel();
         group = new ButtonGroup();
         basic = new JRadioButton("Basica");

@@ -6,6 +6,7 @@ import modelo.datos.Factura;
 import modelo.datos.Particular;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.Calendar;
 
@@ -17,6 +18,7 @@ public class NewFactureJPanel extends JPanel {
 
     public NewFactureJPanel(ImplementacionControlador controlador) {
         this.controlador = controlador;
+        setPreferredSize( new Dimension( 1080, 720 ));
         button = new JButton("OK");
         nifT = new JTextField();
         nifL = new JLabel("NIF/CIF");
@@ -41,7 +43,7 @@ public class NewFactureJPanel extends JPanel {
       //  Factura factura = new Particular(importT.getText(),/* clienteT.getText(),*/  Calendar.getInstance().getTime() /*,tarifaT.getText()*/, periodoT.getText(), tarifaT, direccionT.getText(), cpT.getText(), provinciaT.getText(), poblacionT.getText());
         //controlador.nuevaFactura(factura);
         JOptionPane.showMessageDialog(getParent(),
-                "Particular creado");
+                "Factura creada");
     }
 
 }
