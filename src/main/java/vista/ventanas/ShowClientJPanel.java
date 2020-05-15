@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.util.*;
 
 public class ShowClientJPanel extends JPanel implements ActionListener, ShowClientPanel {
+    JPanel panelList;
     JLabel labelByID;
     JButton all, byid;
     JList<String> table;
@@ -28,35 +29,43 @@ public class ShowClientJPanel extends JPanel implements ActionListener, ShowClie
         all = new JButton("Obtener todos");
         all.addActionListener(this);
         add(all);
+        panelList =new JPanel();
+        add(panelList);
+        data = new Vector<>();
+        table =new JList<>(data);
+        panelList.add(table);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == byid) {
+            panelList.removeAll();
             data = new Vector<String>();
             Cliente cl = modelo.darCliente(labelByID.getText());
             String cli = cl.toString();
             data.add(cli);
             table = new JList<>(data);
-            add(table);
-            updateUI();
+            panelList.add(table);
+            add(panelList);
+            panelList.revalidate();
+            panelList.repaint();
         }
 
         if ((e.getSource() == all)) {
+            panelList.removeAll();
             HashSet<Cliente> clientes = modelo.todosLosClientes();
-            data = new Vector<String>();
+            data.clear();
             for (Cliente actual : clientes) {
                 String cli = actual.toString();
                 data.add(cli);
             }
-            data.add("dd");
             table = new JList<>(data);
-            add(table);
-            System.out.println("XX");
-            repaint();
+            panelList.add(table);
+            add(panelList);
+            panelList.revalidate();
+            panelList.repaint();
         }
-
     }
 
     @Override
