@@ -18,7 +18,7 @@ public class TarifaCreatorJPanel extends JPanel implements ActionListener {
     JPanel content, days, hour, basicP;
 
     public TarifaCreatorJPanel() {
-        setPreferredSize(new Dimension(1080, 720));
+        setPreferredSize( new Dimension( 1080, 1080 ));
         JPanel panel = new JPanel();
         content = new JPanel();
         group = new ButtonGroup();
@@ -93,11 +93,11 @@ public class TarifaCreatorJPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == basic) {
+        if (e.getSource() == save) {
             String name = nombre.getText();
             double importe =Double.parseDouble(importeT.getText());
             if ("basic".equals(e.getActionCommand())) {
-                
+
             } else if ("horas".equals(e.getActionCommand())) {
                 double importeESp=Double.parseDouble(importeEspT.getText());
                 int diaEsd=Integer.parseInt(diaT.getText());
